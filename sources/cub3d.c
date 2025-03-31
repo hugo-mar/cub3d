@@ -6,7 +6,7 @@
 /*   By: hugo-mar <hugo-mar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 15:45:48 by hugo-mar          #+#    #+#             */
-/*   Updated: 2025/03/29 12:19:40 by hugo-mar         ###   ########.fr       */
+/*   Updated: 2025/03/31 17:23:17 by hugo-mar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,22 @@ int	main(int argc, char **argv)
 {
 	(void)argc;
 	(void)argv;
-	t_mlx_data	mlx_data;
+	
+	t_game	*game;
 
-	init_mlx(&mlx_data);
+	game = get_game();
+
+	init_mlx(&game->mlx);
 	
 	// maybe it's not needed (it's a good practice)
-	clear_image(&mlx_data);
+	clear_image(&game->mlx);
 	
 	// you can start putting pixels here, like in this example below
 	for (int i = 600; i < 751; i++)
-		my_mlx_pixel_put(&mlx_data, 200, i, 0x00FFFFFF); 
+		my_mlx_pixel_put(&game->mlx, 200, i, 0x00FFFFFF); 
 		
-	mlx_put_image_to_window(mlx_data.mlx, mlx_data.win, mlx_data.img, 0, 0);
-	setup_hooks_and_loop(&mlx_data);
-	cleanup_mlx(&mlx_data);
+	mlx_put_image_to_window(game->mlx.mlx, game->mlx.win, game->mlx.img, 0, 0);
+	setup_hooks_and_loop(&game->mlx);
+	cleanup_mlx(&game->mlx);
 	return (0);
 }

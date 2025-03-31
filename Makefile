@@ -6,7 +6,7 @@
 #    By: hugo-mar <hugo-mar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/29 14:39:20 by hugo-mar          #+#    #+#              #
-#    Updated: 2025/03/29 12:08:37 by hugo-mar         ###   ########.fr        #
+#    Updated: 2025/03/31 17:11:24 by hugo-mar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ SRCS_DIR = sources
 GNL_DIR = get_next_line
 MLX_DIR = minilibx-linux
 
-SRCS = $(SRCS_DIR)/cub3d.c \
+SRCS = $(SRCS_DIR)/cub3d.c $(SRCS_DIR)/init.c \
 	   $(SRCS_DIR)/mlx_fts1.c $(SRCS_DIR)/mlx_fts2.c \
 	   $(GNL_DIR)/get_next_line.c $(GNL_DIR)/get_next_line_utils.c
 
