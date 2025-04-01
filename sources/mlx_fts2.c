@@ -6,12 +6,15 @@
 /*   By: hugo-mar <hugo-mar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 09:23:58 by hugo-mar          #+#    #+#             */
-/*   Updated: 2025/03/29 12:12:42 by hugo-mar         ###   ########.fr       */
+/*   Updated: 2025/04/01 09:54:07 by hugo-mar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+/*
+Places a pixel of the specified color at the given coordinates in the image.
+*/
 void	my_mlx_pixel_put(t_mlx_data *data, int x, int y, int color)
 {
 	char	*dst;
@@ -20,6 +23,9 @@ void	my_mlx_pixel_put(t_mlx_data *data, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
+/*
+Fills the entire image area with a black (zero) background.
+*/
 void	clear_image(t_mlx_data *data)
 {
 	int	x;
