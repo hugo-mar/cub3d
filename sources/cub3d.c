@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hugo-mar <hugo-mar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: divalent <divalent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 15:45:48 by hugo-mar          #+#    #+#             */
-/*   Updated: 2025/04/01 23:03:19 by hugo-mar         ###   ########.fr       */
+/*   Updated: 2025/04/02 17:12:08 by divalent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+#include "parsing.h"
 
 int	main(int argc, char **argv)
 {
@@ -18,11 +19,14 @@ int	main(int argc, char **argv)
 	(void)argv;
 	
 	t_game	*game;
-
+	t_map	maps;
+	if (parsing_start(argc, argv, &maps) == 1)
+		return (1);
+	readjust_structs(&game, maps);
 	game = get_game();
 	init_mlx(&game->mlx);
 
-	init_test_map(game);
+	//init_test_map(game);
 	
 	// maybe it's not needed (it's a good practice)
 	clear_image(&game->mlx);

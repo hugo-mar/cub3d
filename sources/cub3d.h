@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hugo-mar <hugo-mar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: divalent <divalent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 17:52:32 by hugo-mar          #+#    #+#             */
-/*   Updated: 2025/04/02 14:29:27 by hugo-mar         ###   ########.fr       */
+/*   Updated: 2025/04/02 17:10:44 by divalent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@
 # include <stdbool.h>
 # include <limits.h>
 # include <math.h>
-# include <mlx.h>
-# include "get_next_line.h"
+# include "../minilibx-linux/mlx.h"
+# include "../minilibx-linux/mlx_int.h"
 
 typedef struct s_mlx_data
 {
@@ -52,7 +52,8 @@ typedef struct s_map
 {
 	int		width;				// number of columns in the map
 	int		height;				// number of rows in the map
-	int		**grid;				// 2D grid representing the map layout
+	int		**grid;			// 2D grid representing the map layout
+	char	**original;
 }			t_map;
 
 typedef struct s_ray
