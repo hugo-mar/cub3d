@@ -6,7 +6,7 @@
 /*   By: hugo-mar <hugo-mar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 17:06:41 by hugo-mar          #+#    #+#             */
-/*   Updated: 2025/04/01 13:11:10 by hugo-mar         ###   ########.fr       */
+/*   Updated: 2025/04/01 22:24:16 by hugo-mar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,3 +21,5 @@ t_game *get_game(void)
 
 	return(&game);
 }
+
+// We need to init time and old_time
