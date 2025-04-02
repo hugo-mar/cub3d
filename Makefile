@@ -3,55 +3,52 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: divalent <divalent@student.42.fr>          +#+  +:+       +#+         #
+#    By: hugo-mar <hugo-mar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/02/20 14:32:57 by divalent          #+#    #+#              #
-#    Updated: 2025/03/27 16:42:00 by divalent         ###   ########.fr        #
+#    Created: 2024/07/29 14:39:20 by hugo-mar          #+#    #+#              #
+#    Updated: 2025/04/01 17:43:12 by hugo-mar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cub3d
 
+ARCHIVE = cub3d.a
+
 CC = cc
 
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Werror -Wextra -O3 -I/usr/include -Iminilibx-linux \
+         -Isources -Iget_next_line
+MLX_FLAGS = -L$(MLX_DIR) -lmlx -L/usr/lib -lXext -lX11 -lm -lz
 
-SRC = $(addprefix ./src/, $(SOURCES))
-SOURCES = cub3D.c utils.c utils2.c map_maker.c check_map.c check_map2.c inputs.c minimap.c
+MAKE_LIB = ar -rcs
 
-MLX_LIB = ./minilibx-linux/libmlx_Linux.a
-LIB = libftprintf/libftprintf.a libft/libft.a $(MLX_LIB)
+SRCS_DIR = sources
+GNL_DIR = get_next_line
+MLX_DIR = minilibx-linux
 
-OBJ = $(SRC:.c=.o)
+SRCS = $(SRCS_DIR)/cub3d.c $(SRCS_DIR)/init.c \
+	   $(SRCS_DIR)/mlx_fts1.c $(SRCS_DIR)/mlx_fts2.c \
+	   $(SRCS_DIR)/raycasting.c $(SRCS_DIR)/tmp.c \
+	   $(GNL_DIR)/get_next_line.c $(GNL_DIR)/get_next_line_utils.c
 
-all: libftprintf.a libft.a libmlx_linux.a $(NAME)
+OBJS = $(SRCS:.c=.o)
+
+all: $(NAME)
+
+$(NAME): $(OBJS)
+	$(CC) $(OBJS) $(MLX_FLAGS) -o $(NAME)
+
+$(ARCHIVE): $(OBJS)
+	$(MAKE_LIB) $(ARCHIVE) $(OBJS)
 
 %.o: %.c
-	@$(CC) $(CFLAGS) -I/usr/include -Imlx_linux -O3 -c $< -o $@
-
-$(NAME): $(OBJ) libftprintf/libftprintf.a libft/libft.a $(MLX_LIB)
-	@$(CC) $(CFLAGS) $(OBJ) $(LIB) -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $@
-	@echo "cub3D built"
-
-libftprintf.a:
-	@make -C ./libftprintf
-
-libft.a:
-	@make -C ./libft
-
-libmlx_linux.a:
-	@make -C ./minilibx-linux/ -f Makefile.gen
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	@rm -f $(OBJ)
-	@make -C libftprintf clean
-	@make -C libft clean
-	@make -C ./minilibx-linux/ -f Makefile.gen clean
+	rm -f $(OBJS) $(ARCHIVE)
 
 fclean: clean
-	@rm -f $(NAME)
-	@make -C libftprintf fclean
-	@make -C libft fclean
+	rm -f $(NAME)
 
 re: fclean all
 
