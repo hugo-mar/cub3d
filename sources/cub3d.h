@@ -6,7 +6,7 @@
 /*   By: hugo-mar <hugo-mar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 17:52:32 by hugo-mar          #+#    #+#             */
-/*   Updated: 2025/04/02 14:29:27 by hugo-mar         ###   ########.fr       */
+/*   Updated: 2025/04/03 14:11:48 by hugo-mar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,9 @@ t_game	*get_game(void);
 
 // Raycasting
 void	render_frame(t_game *game);
+double	get_delta_dist(double ray_dir);
+void	draw_vertical_line(t_game *g, int x);
+
 
 // Temporary functions (remove when obsolete)
 void	ft_clean(t_game *game);
