@@ -6,7 +6,7 @@
 /*   By: hugo-mar <hugo-mar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 17:52:32 by hugo-mar          #+#    #+#             */
-/*   Updated: 2025/04/03 14:11:48 by hugo-mar         ###   ########.fr       */
+/*   Updated: 2025/04/04 23:57:50 by hugo-mar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,12 @@
 # define WIN_WIDTH 800
 # define WIN_HEIGHT 600
 # define ESC_KEY 65307
+# define W_KEY 119
+# define A_KEY 97
+# define S_KEY 115
+# define D_KEY 100
+# define LEFT_KEY 65361
+# define RIGHT_KEY 65363
 
 # include <unistd.h>
 # include <stdio.h>
@@ -24,6 +30,7 @@
 # include <stdbool.h>
 # include <limits.h>
 # include <math.h>
+# include <sys/time.h>
 # include <mlx.h>
 # include "get_next_line.h"
 
@@ -75,7 +82,12 @@ typedef struct s_ray
 	int		draw_start;			// starting pixel of the wall slice
 	int		draw_end;			// ending pixel of the wall slice
 	double	time;				// time of current frame
-	double	old_time;			// time of previous frame		
+	double	old_time;			// time of previous frame
+	double	frame_time;			// time the current frame has taken to render
+	double	mov_speed;			// movement speed
+	double	rot_speed;			// rotation speed
+	double	old_dir_x;
+	double	old_plane_x;
 }			t_ray;
 
 typedef struct s_game
@@ -83,12 +95,13 @@ typedef struct s_game
 	t_mlx_data	mlx;
 	t_player	player;
 	t_map		map;
-	t_ray		ray;	
+	t_ray		ray;
+	int			*keys;
 }				t_game;
 
 // Minilibx
 void	init_mlx(t_mlx_data *mlx_data);
-void	setup_hooks_and_loop(t_mlx_data *mlx_data);
+void	setup_hooks_and_loop(t_mlx_data *mlx_data, t_game *game);
 void	cleanup_mlx(t_mlx_data *mlx_data);
 void	my_mlx_pixel_put(t_mlx_data *data, int x, int y, int color);
 void	clear_image(t_mlx_data *data);
@@ -97,14 +110,24 @@ void	clear_image(t_mlx_data *data);
 t_game	*get_game(void);
 
 // Raycasting
-void	render_frame(t_game *game);
+int		render_frame(t_game *game);
 double	get_delta_dist(double ray_dir);
 void	draw_vertical_line(t_game *g, int x);
 
+// Movement
+void	process_player_movement(t_game *game);
+double	get_time_in_milliseconds(void);
+void	move_forward(t_game *g);
+void	move_backward(t_game *g);
+void	move_left(t_game *g);
+void	move_right(t_game *g);
+void	rotate_left(t_game *g);
+void	rotate_right(t_game *g);
 
 // Temporary functions (remove when obsolete)
 void	ft_clean(t_game *game);
 void	init_test_map(t_game *game);
 void	print_game_data(t_game *game);
+void	*ft_memset(void *s, int c, size_t n);
 
 #endif

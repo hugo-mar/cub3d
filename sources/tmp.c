@@ -6,7 +6,7 @@
 /*   By: hugo-mar <hugo-mar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 17:37:58 by hugo-mar          #+#    #+#             */
-/*   Updated: 2025/04/01 22:25:41 by hugo-mar         ###   ########.fr       */
+/*   Updated: 2025/04/04 23:57:08 by hugo-mar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,3 +93,35 @@ void	print_game_data(t_game *game)
 	printf("- dirX: %f, dirY: %f\n", game->player.dir_x, game->player.dir_y);
 	printf("- planeX: %f, planeY: %f\n", game->player.plane_x, game->player.plane_y);
 }
+
+void	*ft_memset(void *s, int c, size_t n)
+{
+	char	*p;
+
+	p = (char *)s;
+	while (n > 0)
+	{
+		p[n - 1] = c;
+		n--;
+	}
+	return (s);
+}
+
+/*
+Ends the MLX loop if the ESC key is pressed.
+*/
+// static int	keyboard_exit(int keycode, t_mlx_data *data)
+// {
+// 	if (keycode == ESC_KEY)
+// 		mlx_loop_end(data->mlx);
+// 	return (0);
+// }
+
+/*
+Redraws the image onto the window whenever the window is exposed (needs repainting).
+*/
+// static int	expose_hook(t_mlx_data *data)
+// {
+//     mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
+//     return (0);
+// }
