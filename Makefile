@@ -6,7 +6,7 @@
 #    By: hugo-mar <hugo-mar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/29 14:39:20 by hugo-mar          #+#    #+#              #
-#    Updated: 2025/03/31 17:11:24 by hugo-mar         ###   ########.fr        #
+#    Updated: 2025/04/08 16:40:21 by hugo-mar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,9 @@ MLX_DIR = minilibx-linux
 
 SRCS = $(SRCS_DIR)/cub3d.c $(SRCS_DIR)/init.c \
 	   $(SRCS_DIR)/mlx_fts1.c $(SRCS_DIR)/mlx_fts2.c \
+	   $(SRCS_DIR)/raycasting1.c $(SRCS_DIR)/raycasting2.c \
+	   $(SRCS_DIR)/movement1.c $(SRCS_DIR)/movement2.c \
+	   $(SRCS_DIR)/textures1.c $(SRCS_DIR)/textures2.c $(SRCS_DIR)/tmp.c \
 	   $(GNL_DIR)/get_next_line.c $(GNL_DIR)/get_next_line_utils.c
 
 OBJS = $(SRCS:.c=.o)

@@ -6,7 +6,7 @@
 /*   By: hugo-mar <hugo-mar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 00:43:50 by hugo-mar          #+#    #+#             */
-/*   Updated: 2025/04/01 09:58:14 by hugo-mar         ###   ########.fr       */
+/*   Updated: 2025/04/04 22:53:23 by hugo-mar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,53 +19,11 @@ and retrieves image data pointers.
 void	init_mlx(t_mlx_data *mlx_data)
 {
 	mlx_data->mlx = mlx_init();
-	mlx_data->win = mlx_new_window(mlx_data->mlx, WIN_WIDTH, WIN_HEIGHT, "cub3d");
+	mlx_data->win = mlx_new_window(mlx_data->mlx, WIN_WIDTH, WIN_HEIGHT,
+			"cub3d");
 	mlx_data->img = mlx_new_image(mlx_data->mlx, WIN_WIDTH, WIN_HEIGHT);
 	mlx_data->addr = mlx_get_data_addr(mlx_data->img, &mlx_data->bits_per_pixel,
 			&mlx_data->line_length, &mlx_data->endian);
-}
-
-/*
-Ends the MLX loop if the ESC key is pressed.
-*/
-static int	keyboard_exit(int keycode, t_mlx_data *data)
-{
-	if (keycode == ESC_KEY)
-		mlx_loop_end(data->mlx);
-	return (0);
-}
-
-/*
-Ends the MLX loop when the window close button is clicked
-*/
-static int	mouse_exit(t_mlx_data *data)
-{
-	mlx_loop_end(data->mlx);
-	return (0);
-}
-
-
-/*
-Redraws the image onto the window whenever the window is exposed (needs repainting).
-TO REMOVE WHEN GAME IS READY - Useful only for static images in small windows.
-*/
-static int	expose_hook(t_mlx_data *data)
-{
-    mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
-    return (0);
-}
-
-/*
-Registers the keyboard and mouse hooks, then starts the MLX event loop.
-*/
-void	setup_hooks_and_loop(t_mlx_data *mlx_data)
-{
-	// TO REMOVE
-	mlx_hook(mlx_data->win, 12, 1L << 15, expose_hook, mlx_data);
-	
-	mlx_hook(mlx_data->win, 2, 1L << 0, keyboard_exit, mlx_data);
-	mlx_hook(mlx_data->win, 17, 0L, mouse_exit, mlx_data);
-	mlx_loop(mlx_data->mlx);
 }
 
 /*
@@ -77,4 +35,36 @@ void	cleanup_mlx(t_mlx_data *mlx_data)
 	mlx_destroy_window(mlx_data->mlx, mlx_data->win);
 	mlx_destroy_display(mlx_data->mlx);
 	free(mlx_data->mlx);
+}
+
+/*
+Places a pixel of the specified color at the given coordinates in the image.
+*/
+void	my_mlx_pixel_put(t_mlx_data *data, int x, int y, int color)
+{
+	char	*dst;
+
+	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
+	*(unsigned int *)dst = color;
+}
+
+/*
+Fills the entire image area with a black (zero) background.
+*/
+void	clear_image(t_mlx_data *data)
+{
+	int	x;
+	int	y;
+
+	y = 0;
+	while (y < WIN_HEIGHT)
+	{
+		x = 0;
+		while (x < WIN_WIDTH)
+		{
+			my_mlx_pixel_put(data, x, y, 0x00000000);
+			x++;
+		}
+		y++;
+	}
 }
