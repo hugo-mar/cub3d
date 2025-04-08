@@ -6,7 +6,7 @@
 /*   By: hugo-mar <hugo-mar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 15:08:44 by hugo-mar          #+#    #+#             */
-/*   Updated: 2025/04/04 23:49:54 by hugo-mar         ###   ########.fr       */
+/*   Updated: 2025/04/05 21:38:53 by hugo-mar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,7 +130,10 @@ int	render_frame(t_game *game)
 		set_step_and_side_dist(game);
 		perform_dda(game);
 		compute_wall_distance(game);
-		draw_vertical_line(game, x);
+		if (TEXTURED_RAYCASTER)
+			draw_textured_column(game, x);
+		else
+			draw_vertical_line(game, x);
 		x++;
 	}
 	mlx_put_image_to_window(game->mlx.mlx, game->mlx.win, game->mlx.img, 0, 0);

@@ -6,7 +6,7 @@
 /*   By: hugo-mar <hugo-mar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 17:52:32 by hugo-mar          #+#    #+#             */
-/*   Updated: 2025/04/04 23:57:50 by hugo-mar         ###   ########.fr       */
+/*   Updated: 2025/04/08 16:50:14 by hugo-mar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # define WIN_WIDTH 800
 # define WIN_HEIGHT 600
+# define TEXTURED_RAYCASTER 1
 # define ESC_KEY 65307
 # define W_KEY 119
 # define A_KEY 97
@@ -44,6 +45,30 @@ typedef struct s_mlx_data
 	int		line_length;		// number of bytes per image line
 	int		endian;				// endianness (0 = little, 1 = big)
 }			t_mlx_data;
+
+typedef struct s_texture
+{
+	void	*img;
+	char	*addr;
+	int		width;
+	int		height;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}			t_texture;
+
+typedef struct s_tex_col
+{
+    double      wall_x;
+    int         tex_x;
+    double      step;
+    double      tex_pos;
+    int         tex_y;
+    unsigned int color;
+    t_texture   *tex;			// ponteiro para a textura actual
+}   t_tex_col;
+
+
 
 typedef struct s_player
 {
@@ -97,37 +122,55 @@ typedef struct s_game
 	t_map		map;
 	t_ray		ray;
 	int			*keys;
+	t_texture	tex;
+	t_texture	n_texture;
+	t_texture	s_texture;
+	t_texture	w_texture;
+	t_texture	e_texture;
 }				t_game;
 
 // Minilibx
-void	init_mlx(t_mlx_data *mlx_data);
-void	setup_hooks_and_loop(t_mlx_data *mlx_data, t_game *game);
-void	cleanup_mlx(t_mlx_data *mlx_data);
-void	my_mlx_pixel_put(t_mlx_data *data, int x, int y, int color);
-void	clear_image(t_mlx_data *data);
+void		init_mlx(t_mlx_data *mlx_data);
+void		setup_hooks_and_loop(t_mlx_data *mlx_data, t_game *game);
+void		cleanup_mlx(t_mlx_data *mlx_data);
+void		my_mlx_pixel_put(t_mlx_data *data, int x, int y, int color);
+void		clear_image(t_mlx_data *data);
 
 // Initialization
-t_game	*get_game(void);
+t_game		*get_game(void);
+
+// Cleanup
+void		clean_exit(t_game *g);
 
 // Raycasting
-int		render_frame(t_game *game);
-double	get_delta_dist(double ray_dir);
-void	draw_vertical_line(t_game *g, int x);
+int			render_frame(t_game *game);
+double		get_delta_dist(double ray_dir);
+void		draw_vertical_line(t_game *g, int x);
 
 // Movement
-void	process_player_movement(t_game *game);
-double	get_time_in_milliseconds(void);
-void	move_forward(t_game *g);
-void	move_backward(t_game *g);
-void	move_left(t_game *g);
-void	move_right(t_game *g);
-void	rotate_left(t_game *g);
-void	rotate_right(t_game *g);
+void		process_player_movement(t_game *game);
+double		get_time_in_milliseconds(void);
+void		move_forward(t_game *g);
+void		move_backward(t_game *g);
+void		move_left(t_game *g);
+void		move_right(t_game *g);
+void		rotate_left(t_game *g);
+void		rotate_right(t_game *g);
+
+// Textures
+t_texture	load_texture(void *mlx_ptr, char *file_path, t_game *g);
+void		select_wall_texture(t_game *g, t_tex_col *tc);
+double		compute_wall_x(t_game *g);
+int			compute_texture_x(double wall_x, t_texture *tex, t_game *g);
+void		compute_texture_mapping_params(t_game *g, t_tex_col *tc);
+void		render_texture_column_pixels(t_game *g, t_tex_col *tc, int x);
+void		draw_textured_column(t_game *g, int x);
 
 // Temporary functions (remove when obsolete)
-void	ft_clean(t_game *game);
-void	init_test_map(t_game *game);
-void	print_game_data(t_game *game);
-void	*ft_memset(void *s, int c, size_t n);
+void		ft_clean(t_game *game);
+void		init_test_map(t_game *game);
+void		temporary_init(t_game *game);
+void		print_game_data(t_game *game);
+void		*ft_memset(void *s, int c, size_t n);
 
 #endif
