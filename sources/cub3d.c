@@ -6,12 +6,27 @@
 /*   By: divalent <divalent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 15:45:48 by hugo-mar          #+#    #+#             */
-/*   Updated: 2025/04/02 17:12:08 by divalent         ###   ########.fr       */
+/*   Updated: 2025/04/08 18:23:41 by divalent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-#include "parsing.h"
+
+void	reajust_structs(t_game **game, t_mapt *maps)
+{
+	(*game)->map.grid = maps->int_map;
+	(*game)->map.original = maps->map;
+	(*game)->map.height = maps->y_max;
+	(*game)->map.width = maps->x_max;
+	(*game)->player.dir_x = maps->p_d[0];
+	(*game)->player.dir_y = maps->p_d[1];
+	(*game)->player.pos_x = maps->p_x;
+	(*game)->player.pos_y = maps->p_y;
+	(*game)->player.plane_x = 0;
+	(*game)->player.plane_y = 0.66;
+	(*game)->ray.time = 0;
+	(*game)->ray.old_time = 0;
+}
 
 int	main(int argc, char **argv)
 {
@@ -19,14 +34,14 @@ int	main(int argc, char **argv)
 	(void)argv;
 	
 	t_game	*game;
-	t_map	maps;
+	t_mapt	maps;
+	game = get_game();
 	if (parsing_start(argc, argv, &maps) == 1)
 		return (1);
-	readjust_structs(&game, maps);
-	game = get_game();
+	reajust_structs(&game, &maps);
 	init_mlx(&game->mlx);
 
-	//init_test_map(game);
+	init_test_map(game);
 	
 	// maybe it's not needed (it's a good practice)
 	clear_image(&game->mlx);

@@ -11,13 +11,7 @@
 # include "../minilibx-linux/mlx.h"
 # include "../minilibx-linux/mlx_int.h"
 
-typedef struct s_mlx_datap
-{
-	void	*mlx;
-	void	*mlx_win;
-}				t_data;
-
-typedef struct s_map
+typedef struct s_mapt
 {
 	char	**map;
 	int		**int_map;
@@ -28,7 +22,7 @@ typedef struct s_map
 	int		y_max;
 	int		x_max;
 	int		hitbox;
-}				t_map;
+}				t_mapt;
 
 typedef struct s_image
 {
@@ -44,27 +38,26 @@ typedef struct s_image
 
 typedef struct s_all
 {
-	t_map	*maps;
-	t_data	*data;
+	t_mapt	*maps;
 }				t_all;
 
-int		parsing_start(int argc, char **argv, t_map *maps);
+int		parsing_start(int argc, char **argv, t_mapt *maps);
 void	free_array(char **arr);
 void	free_int_array(int **arr, int max);
 void	fill(char **tab, int x, int y);
 char	**copy_array(char **arr);
 int		detect_zero_next_to_space(char **tab, int x, int y);
-void	make_map(t_map *maps, char *path);
-void	maps_init(t_map *maps);
-int		check_map(t_map *maps, char *path);
-void	form_int_map(t_map *maps);
+void	make_map(t_mapt *maps, char *path);
+void	maps_init(t_mapt *maps);
+int		check_map(t_mapt *maps, char *path);
+void	form_int_map(t_mapt *maps);
 int		invalid_chars(char **map);
-void	maps_cleaner(t_map *maps);
+void	maps_cleaner(t_mapt *maps);
 int		closeit(t_all *all, int signal);
-void	mlx_cleaner(t_data *data);
+//void	mlx_cleaner(t_data *data);
 int		on_keypress(int keysym, t_all *all);
 void    make_minimap(t_all *all);
-void	fill_pixels(t_map *maps, t_data *data, float x, float y, int color);
-int		check_hitbox(t_map *maps, float new_x, float new_y);
+//void	fill_pixels(t_mapt *maps, t_data *data, float x, float y, int color);
+int		check_hitbox(t_mapt *maps, float new_x, float new_y);
 
 #endif

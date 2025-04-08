@@ -6,7 +6,7 @@
 #    By: divalent <divalent@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/20 14:32:57 by divalent          #+#    #+#              #
-#    Updated: 2025/04/02 17:00:48 by divalent         ###   ########.fr        #
+#    Updated: 2025/04/08 17:29:25 by divalent         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror -g
 
 SRC = $(addprefix ./sources/, $(SOURCES))
-SOURCES = cub3d.c init.c mlx_fts1.c mlx_fts2.c raycasting.c tmp.c
+SOURCES = cub3d.c init.c mlx_fts1.c mlx_fts2.c raycasting.c tmp.c utils.c utils2.c map_maker.c check_map.c check_map2.c parsing.c
 
 MLX_LIB = ./minilibx-linux/libmlx_Linux.a
 LIB = libftprintf/libftprintf.a libft/libft.a $(MLX_LIB)
