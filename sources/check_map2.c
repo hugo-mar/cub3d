@@ -6,7 +6,7 @@
 /*   By: divalent <divalent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 15:04:32 by divalent          #+#    #+#             */
-/*   Updated: 2025/04/08 17:28:29 by divalent         ###   ########.fr       */
+/*   Updated: 2025/04/10 16:47:07 by divalent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,8 @@ void	form_int_map(t_mapt *maps)
 				maps->int_map[y][x] = maps->map[y][x] - 48;
 			else if (maps->map[y][x] == ' ')
 				maps->int_map[y][x] = 2;
-			//printf("%d", maps->int_map[y][x]);
 			x++;
 		}
-		//printf("\n");
 		x = 0;
 		y++;
 	}

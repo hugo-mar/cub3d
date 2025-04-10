@@ -6,7 +6,7 @@
 /*   By: divalent <divalent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 15:04:26 by divalent          #+#    #+#             */
-/*   Updated: 2025/04/08 17:28:24 by divalent         ###   ########.fr       */
+/*   Updated: 2025/04/10 16:02:19 by divalent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,9 +122,6 @@ int	check_map(t_mapt *maps, char *path)
 		return (1);
 	if (sep_map(maps->map) == 1)
 		return (1);
-	/*int k = 0;
-	while (maps->map[k])
-		printf("%s", maps->map[k++]);*/
 	if (is_closed(maps->map) == 1)
 		return (1);
 	form_int_map(maps);

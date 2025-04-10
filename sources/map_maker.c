@@ -6,7 +6,7 @@
 /*   By: divalent <divalent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 15:04:37 by divalent          #+#    #+#             */
-/*   Updated: 2025/04/08 17:26:18 by divalent         ###   ########.fr       */
+/*   Updated: 2025/04/10 16:50:32 by divalent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,6 @@ void	make_map(t_mapt *maps, char *path)
 		maps->map[i] = get_next_line(fd);
 	}
 	maps->y_max = i;
-	maps->x_max = x;
+	maps->x_max = x - 1;
 	close(fd);
 }
