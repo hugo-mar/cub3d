@@ -6,7 +6,7 @@
 /*   By: hugo-mar <hugo-mar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 16:38:33 by hugo-mar          #+#    #+#             */
-/*   Updated: 2025/04/08 16:40:39 by hugo-mar         ###   ########.fr       */
+/*   Updated: 2025/04/16 18:05:15 by hugo-mar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,15 +42,15 @@ void	select_wall_texture(t_game *g, t_tex_col *tc)
 	if (g->ray.side == 0)
     {
         if (g->ray.ray_dir_x > 0)
-            tc->tex = &g->e_texture;
+            tc->tex = &g->s_texture;
         else
-            tc->tex = &g->w_texture;
+            tc->tex = &g->n_texture;
     }
     else
     {
         if (g->ray.ray_dir_y > 0)
-            tc->tex = &g->s_texture;
+            tc->tex = &g->e_texture;
         else
-            tc->tex = &g->n_texture;
+            tc->tex = &g->w_texture;
     }
 }
