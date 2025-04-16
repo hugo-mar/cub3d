@@ -6,7 +6,7 @@
 /*   By: hugo-mar <hugo-mar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 23:21:23 by hugo-mar          #+#    #+#             */
-/*   Updated: 2025/04/04 23:52:50 by hugo-mar         ###   ########.fr       */
+/*   Updated: 2025/04/16 19:11:50 by hugo-mar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,25 @@ void	rotate_right(t_game *g)
 		- g->player.plane_y * sin(-g->ray.rot_speed);
 	g->player.plane_y = g->ray.old_plane_x * sin(-g->ray.rot_speed)
 		+ g->player.plane_y * cos(-g->ray.rot_speed);
+}
+
+/*
+Reorients the player from its default north‑facing direction by assigning the
+required rotation angle (in radians).
+*/
+void	orientate_player(t_game *g, char direction)
+{
+	if (direction == 'N')
+		return ;
+	else if (direction == 'S')
+		g->ray.rot_speed = PI;
+	else if (direction == 'E')
+		g->ray.rot_speed = 3 * PI / 2;
+	else if (direction == 'W')
+		g->ray.rot_speed = PI /2;
+	else
+		return;
+	rotate_left(g);
 }
 
 /*

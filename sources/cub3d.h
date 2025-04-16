@@ -6,7 +6,7 @@
 /*   By: hugo-mar <hugo-mar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 17:52:32 by hugo-mar          #+#    #+#             */
-/*   Updated: 2025/04/08 16:50:14 by hugo-mar         ###   ########.fr       */
+/*   Updated: 2025/04/16 19:12:48 by hugo-mar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # define D_KEY 100
 # define LEFT_KEY 65361
 # define RIGHT_KEY 65363
+# define PI 3.141592653589793
 
 # include <unistd.h>
 # include <stdio.h>
@@ -138,6 +139,8 @@ void		clear_image(t_mlx_data *data);
 
 // Initialization
 t_game		*get_game(void);
+void		orientate_player(t_game *g, char direction);
+
 
 // Cleanup
 void		clean_exit(t_game *g);

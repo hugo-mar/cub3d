@@ -6,7 +6,7 @@
 /*   By: hugo-mar <hugo-mar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 17:37:58 by hugo-mar          #+#    #+#             */
-/*   Updated: 2025/04/08 16:49:34 by hugo-mar         ###   ########.fr       */
+/*   Updated: 2025/04/16 19:14:19 by hugo-mar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,8 @@ void	init_test_map(t_game *game)
 	game->player.plane_y = 0.66;
 	game->ray.time = 0;
 	game->ray.old_time = 0;
+
+	orientate_player(game, 'W');
 }
 
 void	print_game_data(t_game *game)
