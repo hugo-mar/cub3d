@@ -6,7 +6,7 @@
 /*   By: divalent <divalent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 15:04:37 by divalent          #+#    #+#             */
-/*   Updated: 2025/04/10 16:50:32 by divalent         ###   ########.fr       */
+/*   Updated: 2025/04/20 17:57:05 by divalent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,12 @@ void	maps_init(t_mapt *maps)
 	maps->x_max = 0;
 	maps->y_max = 0;
 	maps->speed = 0.333f;
+	maps->ceiling[3] = NULL;
+	maps->floor[3] = NULL;
+	maps->NO = NULL;
+	maps->SO = NULL;
+	maps->EA = NULL;
+	maps->WE = NULL;
 }
 
 void	maps_cleaner(t_mapt *maps)
@@ -47,6 +53,24 @@ void	map_add(t_mapt *maps, int num)
 	maps->map = temp;
 }
 
+int	rgb_taker(t_mapt *maps, int fd)
+{
+	char	*line;
+	int		flag;
+
+	flag = 0;
+	while (1)
+	{
+		line = get_next_line(fd);
+		if (line == NULL)
+			return (1);
+		if (ft_strncmp(line, "\n", 1) != 0)
+			rgb_checkers(maps, line);
+		free(line);
+		if (is_all_here())
+	}
+}
+
 void	make_map(t_mapt *maps, char *path)
 {
 	int		fd;
@@ -58,6 +82,7 @@ void	make_map(t_mapt *maps, char *path)
 	fd = open(path, O_RDONLY);
 	if (fd == -1)
 		return ;
+	rgb_taker(maps, fd);
 	map_add(maps, i + 1);
 	maps->map[i] = get_next_line(fd);
 	while (maps->map[i] != NULL)

@@ -6,7 +6,7 @@
 /*   By: divalent <divalent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 15:45:48 by hugo-mar          #+#    #+#             */
-/*   Updated: 2025/04/08 16:50:27 by hugo-mar         ###   ########.fr       */
+/*   Updated: 2025/04/20 17:05:51 by divalent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ void	reajust_structs(t_game **game, t_mapt *maps)
 	(*game)->map.original = maps->map;
 	(*game)->map.height = maps->y_max;
 	(*game)->map.width = maps->x_max;
-	(*game)->player.dir_x = maps->p_d[0];
-	(*game)->player.dir_y = maps->p_d[1];
-	(*game)->player.pos_x = maps->p_x + 1;
-	(*game)->player.pos_y = maps->p_y + 1;
+	(*game)->player.dir_x = -1;
+	(*game)->player.dir_y = 0;
+	(*game)->player.pos_x = maps->p_y + 1;
+	(*game)->player.pos_y = maps->p_x + 1;
 	(*game)->player.plane_x = 0;
 	(*game)->player.plane_y = 0.66;
 	(*game)->ray.time = 0;

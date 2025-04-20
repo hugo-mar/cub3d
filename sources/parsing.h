@@ -22,6 +22,12 @@ typedef struct s_mapt
 	int		y_max;
 	int		x_max;
 	int		hitbox;
+	char	*NO;
+	char	*SO;
+	char	*WE;
+	char	*EA;
+	int		floor[3];
+	int		ceiling[3];
 }				t_mapt;
 
 typedef struct s_image

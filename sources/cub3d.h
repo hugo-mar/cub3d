@@ -6,7 +6,7 @@
 /*   By: divalent <divalent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 17:52:32 by hugo-mar          #+#    #+#             */
-/*   Updated: 2025/04/16 19:12:48 by hugo-mar         ###   ########.fr       */
+/*   Updated: 2025/04/20 16:51:59 by divalent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@
 # include "../minilibx-linux/mlx_int.h"
 # include "parsing.h"
 # include <sys/time.h>
-# include <mlx.h>
 
 typedef struct s_mlx_data
 {
@@ -178,9 +177,6 @@ void		init_test_map(t_game *game);
 void		temporary_init(t_game *game);
 void		print_game_data(t_game *game);
 void		*ft_memset(void *s, int c, size_t n);
-
-// Raycasting
-void	render_frame(t_game *game);
 
 // Temporary functions (remove when obsolete)
 void	ft_clean(t_game *game);
