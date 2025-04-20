@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hugo-mar <hugo-mar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: divalent <divalent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 17:52:32 by hugo-mar          #+#    #+#             */
 /*   Updated: 2025/04/16 19:12:48 by hugo-mar         ###   ########.fr       */
@@ -32,9 +32,11 @@
 # include <stdbool.h>
 # include <limits.h>
 # include <math.h>
+# include "../minilibx-linux/mlx.h"
+# include "../minilibx-linux/mlx_int.h"
+# include "parsing.h"
 # include <sys/time.h>
 # include <mlx.h>
-# include "get_next_line.h"
 
 typedef struct s_mlx_data
 {
@@ -85,7 +87,8 @@ typedef struct s_map
 {
 	int		width;				// number of columns in the map
 	int		height;				// number of rows in the map
-	int		**grid;				// 2D grid representing the map layout
+	int		**grid;			// 2D grid representing the map layout
+	char	**original;
 }			t_map;
 
 typedef struct s_ray
@@ -175,5 +178,13 @@ void		init_test_map(t_game *game);
 void		temporary_init(t_game *game);
 void		print_game_data(t_game *game);
 void		*ft_memset(void *s, int c, size_t n);
+
+// Raycasting
+void	render_frame(t_game *game);
+
+// Temporary functions (remove when obsolete)
+void	ft_clean(t_game *game);
+void	init_test_map(t_game *game);
+void	print_game_data(t_game *game);
 
 #endif
