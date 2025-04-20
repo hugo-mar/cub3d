@@ -6,7 +6,7 @@
 /*   By: divalent <divalent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 15:45:48 by hugo-mar          #+#    #+#             */
-/*   Updated: 2025/04/10 16:51:01 by divalent         ###   ########.fr       */
+/*   Updated: 2025/04/08 16:50:27 by hugo-mar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,20 +41,14 @@ int	main(int argc, char **argv)
 	reajust_structs(&game, &maps);
 	init_mlx(&game->mlx);
 
-	print_game_data(game);
 	//init_test_map(game);
-
-	// maybe it's not needed (it's a good practice)
-	clear_image(&game->mlx);
+	temporary_init(game);
 	
-	// you can start putting pixels here, like in this example below
-	render_frame(game);
-		
-	mlx_put_image_to_window(game->mlx.mlx, game->mlx.win, game->mlx.img, 0, 0);
-	setup_hooks_and_loop(&game->mlx);
+	setup_hooks_and_loop(&game->mlx, game);
 	cleanup_mlx(&game->mlx);
 
 	ft_clean(game);
+	free(game->keys);
 
 	return (0);
 }
