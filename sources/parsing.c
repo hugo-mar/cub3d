@@ -6,32 +6,11 @@
 /*   By: divalent <divalent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 15:04:29 by divalent          #+#    #+#             */
-/*   Updated: 2025/04/08 16:26:59 by divalent         ###   ########.fr       */
+/*   Updated: 2025/04/21 16:47:40 by divalent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
-
-/* 
-void	cub(t_mapt *maps)
-{
-	t_data	data;
-	t_all	all;
-
-	all.data = &data;
-	all.maps = maps;
-	data.mlx = mlx_init();
-	if (!data.mlx)
-		return ;
-	data.mlx_win = mlx_new_window(data.mlx, (maps->x_max * 64),
-			(maps->y_max * 64), "cub3D");
-	if (!data.mlx_win)
-		return (free(data.mlx_win));
-	make_minimap(&all);
-	mlx_hook(data.mlx_win, 17, 0, &closeit, &all);
-	mlx_key_hook(data.mlx_win, &on_keypress, &all);
-	mlx_loop(data.mlx);
-} */
 
 int	parsing_start(int argc, char **argv, t_mapt *maps)
 {
@@ -45,6 +24,5 @@ int	parsing_start(int argc, char **argv, t_mapt *maps)
 		maps_cleaner(maps);
 		return (1);
 	}
-	//cub(&maps);
 	return (0);
 }

@@ -1,6 +1,7 @@
 #include "parsing.h"
+#include "cub3d.h"
 
-void	fill_pixels(t_mapt *maps, t_data *data, float x, float y, int color)
+void	fill_pixels(t_game *game, float x, float y, int color)
 {
 	int	dy;
 	int	dx;
@@ -8,8 +9,8 @@ void	fill_pixels(t_mapt *maps, t_data *data, float x, float y, int color)
 	int scale_y;
 	int	cell_size;
 
-	scale_x = 200 / maps->x_max;
-    scale_y = 200 / maps->y_max;
+	scale_x = 200 / game->map.width;
+    scale_y = 200 / game->map.height;
 	if (scale_x < scale_y)
 		cell_size = scale_x;
 	else
@@ -20,7 +21,7 @@ void	fill_pixels(t_mapt *maps, t_data *data, float x, float y, int color)
 	{
 		while (dx < cell_size)
 		{
-			mlx_pixel_put(data->mlx, data->mlx_win, (x * cell_size) + dx, (y * cell_size) + dy, color);
+			mlx_pixel_put(game->mlx.mlx, game->mlx.win, (x * cell_size) + dx, (y * cell_size) + dy, color);
 			dx++;
 		}
 		dx = 0;
@@ -28,39 +29,38 @@ void	fill_pixels(t_mapt *maps, t_data *data, float x, float y, int color)
 	}
 }
 
-void	fill_minimap(t_all *all)
+void	fill_minimap(t_game *game)
 {
 	int	x;
 	int	y;
 
 	x = 0;
 	y = 0;
-	while (all->maps->map[y])
+	while (game->map.original[y])
 	{
-		while (all->maps->map[y][x])
+		while (game->map.original[y][x])
 		{
-			if (all->maps->map[y][x] == '1')
-				fill_pixels(all->maps, all->data, x, y, 0x0000FF);
+			if (game->map.original[y][x] == '1')
+				fill_pixels(game, x, y, 0x0000FF);
 			x++;
 		}
 		x = 0;
 		y++;
 	}
-	fill_pixels(all->maps, all->data, all->maps->p_x, all->maps->p_y, 0xFF0000);
+	fill_pixels(game, game->player.pos_y, game->player.pos_x, 0xFF0000);
 }
 
-void	make_minimap(t_all *all)
+void	make_minimap(t_game *game)
 {
 	t_image	img;
 	int		img_width;
 	int		img_height;
 
-	img.addr = "./assets/minimap.xpm";
-	img.img = mlx_xpm_file_to_image(all->data->mlx, img.addr,
+	img.addr = "./textures/minimap.xpm";
+	img.img = mlx_xpm_file_to_image(game->mlx.mlx, img.addr,
 			&img_width, &img_height);
-	mlx_put_image_to_window(all->data->mlx, all->data->mlx_win, img.img,
+	mlx_put_image_to_window(game->mlx.mlx, game->mlx.win, img.img,
 		0, 0);
-	mlx_destroy_image(all->data->mlx, img.img);
-	fill_minimap(all);
-	
+	mlx_destroy_image(game->mlx.mlx, img.img);
+	fill_minimap(game);
 }

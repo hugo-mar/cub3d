@@ -6,11 +6,23 @@
 /*   By: divalent <divalent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 15:04:35 by divalent          #+#    #+#             */
-/*   Updated: 2025/04/08 17:26:00 by divalent         ###   ########.fr       */
+/*   Updated: 2025/04/21 15:53:13 by divalent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
+
+int	is_all_here(t_mapt *maps)
+{
+	if (maps->NO && maps->SO && maps->EA && maps->WE && 
+		maps->floor[2] >= 0 && maps->ceiling[2] >= 0 &&
+		maps->floor[1] >= 0 && maps->ceiling[1] >= 0 &&
+		maps->floor[0] >= 0 && maps->ceiling[0] >= 0)
+	{
+		return (1);
+	}
+	return (0);
+}
 
 void	free_array(char **arr)
 {

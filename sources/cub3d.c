@@ -6,7 +6,7 @@
 /*   By: divalent <divalent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 15:45:48 by hugo-mar          #+#    #+#             */
-/*   Updated: 2025/04/20 17:05:51 by divalent         ###   ########.fr       */
+/*   Updated: 2025/04/21 18:34:44 by divalent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ void	reajust_structs(t_game **game, t_mapt *maps)
 	(*game)->map.width = maps->x_max;
 	(*game)->player.dir_x = -1;
 	(*game)->player.dir_y = 0;
-	(*game)->player.pos_x = maps->p_y + 1;
-	(*game)->player.pos_y = maps->p_x + 1;
+	(*game)->player.pos_x = maps->p_y;
+	(*game)->player.pos_y = maps->p_x;
 	(*game)->player.plane_x = 0;
 	(*game)->player.plane_y = 0.66;
 	(*game)->ray.time = 0;
@@ -29,12 +29,10 @@ void	reajust_structs(t_game **game, t_mapt *maps)
 }
 
 int	main(int argc, char **argv)
-{
-	(void)argc;
-	(void)argv;
-	
+{	
 	t_game	*game;
 	t_mapt	maps;
+
 	game = get_game();
 	if (parsing_start(argc, argv, &maps) == 1)
 		return (1);
@@ -42,6 +40,7 @@ int	main(int argc, char **argv)
 	init_mlx(&game->mlx);
 
 	//init_test_map(game);
+	orientate_player(game, maps.p_d);
 	temporary_init(game);
 	
 	setup_hooks_and_loop(&game->mlx, game);

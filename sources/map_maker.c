@@ -6,7 +6,7 @@
 /*   By: divalent <divalent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 15:04:37 by divalent          #+#    #+#             */
-/*   Updated: 2025/04/20 17:57:05 by divalent         ###   ########.fr       */
+/*   Updated: 2025/04/21 18:23:12 by divalent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,16 @@ void	maps_init(t_mapt *maps)
 {
 	maps->map = NULL;
 	maps->int_map = NULL;
-	maps->p_d[0] = 0;
-	maps->p_d[1] = 0;
+	maps->p_d = 0;
 	maps->x_max = 0;
 	maps->y_max = 0;
 	maps->speed = 0.333f;
-	maps->ceiling[3] = NULL;
-	maps->floor[3] = NULL;
+	maps->ceiling[2] = -1;
+	maps->floor[2] = -1;
+	maps->ceiling[1] = -1;
+	maps->floor[1] = -1;
+	maps->ceiling[0] = -1;
+	maps->floor[0] = -1;
 	maps->NO = NULL;
 	maps->SO = NULL;
 	maps->EA = NULL;
@@ -67,8 +70,15 @@ int	rgb_taker(t_mapt *maps, int fd)
 		if (ft_strncmp(line, "\n", 1) != 0)
 			rgb_checkers(maps, line);
 		free(line);
-		if (is_all_here())
+		if (is_all_here(maps) == 1)
+			break ;
 	}
+	if (is_all_here(maps) == 0)
+	{
+		write(1, "Invalid textures/colors\n", 25);
+		return (1);
+	}
+	return (0);
 }
 
 void	make_map(t_mapt *maps, char *path)

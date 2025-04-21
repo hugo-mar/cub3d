@@ -6,36 +6,17 @@
 /*   By: divalent <divalent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 15:04:26 by divalent          #+#    #+#             */
-/*   Updated: 2025/04/10 16:02:19 by divalent         ###   ########.fr       */
+/*   Updated: 2025/04/21 18:34:10 by divalent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
 
-void	get_direct(t_mapt *maps, char c, int x, int y)
+void	player_where(t_mapt *maps, int x, int y)
 {
-	if (c == 'N')
-	{
-		maps->p_d[0] = 0;
-		maps->p_d[1] = -1;
-	}
-	else if (c == 'W')
-	{
-		maps->p_d[0] = -1;
-		maps->p_d[1] = 0;
-	}
-	else if (c == 'E')
-	{
-		maps->p_d[0] = 1;
-		maps->p_d[1] = 0;
-	}
-	else if (c == 'S')
-	{
-		maps->p_d[0] = 0;
-		maps->p_d[1] = 1;
-	}
 	maps->p_x = x;
 	maps->p_y = y;
+	maps->p_d = maps->map[y][x];
 	maps->map[y][x] = '0';
 }
 
@@ -53,16 +34,16 @@ int	has_player(t_mapt *maps)
 			if (maps->map[y][x] == 'N' || maps->map[y][x] == 'W' ||
 				maps->map[y][x] == 'E' || maps->map[y][x] == 'S')
 			{
-				if (maps->p_d[0] != 0 && maps->p_d[1] != 0)
+				if (maps->p_d != 0)
 					return (1);
-				get_direct(maps, maps->map[y][x], x, y);
+				player_where(maps, x, y);
 			}
 			x++;
 		}
 		x = 0;
 		y++;
 	}
-	if (maps->p_d[0] == 0 && maps->p_d[1] == 0)
+	if (maps->p_d == 0)
 		return (1);
 	return (0);
 }

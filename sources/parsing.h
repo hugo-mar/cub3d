@@ -18,7 +18,7 @@ typedef struct s_mapt
 	float	p_y;
 	float	p_x;
 	float	speed;
-	double	p_d[2];
+	char	p_d;
 	int		y_max;
 	int		x_max;
 	int		hitbox;
@@ -61,9 +61,11 @@ int		invalid_chars(char **map);
 void	maps_cleaner(t_mapt *maps);
 int		closeit(t_all *all, int signal);
 //void	mlx_cleaner(t_data *data);
-int		on_keypress(int keysym, t_all *all);
-void    make_minimap(t_all *all);
 //void	fill_pixels(t_mapt *maps, t_data *data, float x, float y, int color);
 int		check_hitbox(t_mapt *maps, float new_x, float new_y);
+int		is_all_here(t_mapt *maps);
+int		rgb_taker(t_mapt *maps, int fd);
+void	rgb_checkers(t_mapt *map, char *line);
+//void	relocate_player(t_mapt *maps, t_data *data, int keysym);
 
 #endif

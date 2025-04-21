@@ -6,7 +6,7 @@
 /*   By: divalent <divalent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 17:52:32 by hugo-mar          #+#    #+#             */
-/*   Updated: 2025/04/20 16:51:59 by divalent         ###   ########.fr       */
+/*   Updated: 2025/04/21 17:49:53 by divalent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -182,5 +182,11 @@ void		*ft_memset(void *s, int c, size_t n);
 void	ft_clean(t_game *game);
 void	init_test_map(t_game *game);
 void	print_game_data(t_game *game);
+
+//parsing extras
+void	make_minimap(t_game *game);
+void	fill_pixels(t_game *game, float x, float y, int color);
+void	redraw_minimap(t_game *game);
+void	draw_player(t_game *game);
 
 #endif

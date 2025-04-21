@@ -6,7 +6,11 @@ int		checka_isto(char **temp)
 
 	i = 0;
 	while (temp[i])
+	{
+		if (ft_isdigit(temp[i][0]) == 0)
+			return (1);
 		i++;
+	}
 	if (i < 3)
 		return (1);
 	return (0);
@@ -17,7 +21,7 @@ void	rgb_2(t_mapt *map, char *line)
 	char	**temp;
 
 	temp = NULL;
-	if (ft_strncmp(line, "C", 1) == 0)
+	if (ft_strncmp(line, "C ", 2) == 0)
 	{
 		temp = ft_split(line + 2, ',');
 		if (checka_isto(temp) == 1)
@@ -25,9 +29,9 @@ void	rgb_2(t_mapt *map, char *line)
 		map->ceiling[0] = ft_atoi(temp[0]);
 		map->ceiling[1] = ft_atoi(temp[1]);
 		map->ceiling[2] = ft_atoi(temp[2]);
-		return ;
+		free_array(temp);
 	}
-	else if (ft_strncmp(line, "F", 1) == 0)
+	else if (ft_strncmp(line, "F ", 2) == 0)
 	{
 		temp = ft_split(line + 2, ',');
 		if (checka_isto(temp) == 1)
@@ -35,7 +39,7 @@ void	rgb_2(t_mapt *map, char *line)
 		map->floor[0] = ft_atoi(temp[0]);
 		map->floor[1] = ft_atoi(temp[1]);
 		map->floor[2] = ft_atoi(temp[2]);
-		return ;
+		free_array(temp);
 	}
 }
 
@@ -43,22 +47,22 @@ void	rgb_checkers(t_mapt *map, char *line)
 {
 	while (*line == ' ')
 		line++;
-	if (ft_strncmp(line, "NO", 2) == 0)
+	if (ft_strncmp(line, "NO ", 3) == 0)
 	{
 		map->NO = line + 3;
 		return ;
 	}
-	else if (ft_strncmp(line, "SO", 2) == 0)
+	else if (ft_strncmp(line, "SO ", 3) == 0)
 	{
 		map->SO = line + 3;
 		return ;
 	}
-	else if (ft_strncmp(line, "WE", 2) == 0)
+	else if (ft_strncmp(line, "WE ", 3) == 0)
 	{
 		map->WE = line + 3;
 		return ;
 	}
-	else if (ft_strncmp(line, "EA", 2) == 0)
+	else if (ft_strncmp(line, "EA ", 3) == 0)
 	{
 		map->EA = line + 3;
 		return ;
