@@ -6,18 +6,15 @@
 /*   By: hugo-mar <hugo-mar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 15:45:48 by hugo-mar          #+#    #+#             */
-/*   Updated: 2025/04/22 16:36:00 by hugo-mar         ###   ########.fr       */
+/*   Updated: 2025/04/23 00:01:38 by hugo-mar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	color_in_hex(int r, int g, int b)
+unsigned int	color_rgb(int r, int g, int b)
 {
-	int	rr = r;
-	int	gg = g;
-	int	bb = b;
-	return ((rr << 24) | (gg << 16) | (bb << 8) | 0xFF);
+	return (r << 16) | (g << 8) | b;
 }
 
 void	reajust_structs(t_game **game, t_mapt *maps)
@@ -34,11 +31,13 @@ void	reajust_structs(t_game **game, t_mapt *maps)
 	(*game)->player.plane_y = 0.66;
 	(*game)->ray.time = 0;
 	(*game)->ray.old_time = 0;
-	(*game)->sky_color = color_in_hex(maps->ceiling[0], maps->ceiling[1], maps->ceiling[2]);
-	(*game)->floor_color = color_in_hex(maps->floor[0], maps->floor[1], maps->floor[2]);
+	(*game)->sky_color = color_rgb(maps->ceiling[0], maps->ceiling[1],
+		maps->ceiling[2]);
+	(*game)->floor_color = color_rgb(maps->floor[0], maps->floor[1],
+		maps->floor[2]);
 	(*game)->keys = malloc(sizeof(int) * 65536);
 	if (!(*game)->keys)
-    	clean_exit(*game);
+    	clean_exit(*game, 1);
 	ft_memset((*game)->keys, 0, sizeof(int) * 65536);
 }
 
@@ -50,18 +49,17 @@ int	main(int argc, char **argv)
 	game = get_game();
 	if (parsing_start(argc, argv, &maps) == 1)
 		return (1);
-	reajust_structs(&game, &maps);
-	init_mlx(&game->mlx);
 
-	//init_test_map(game);
+	// THIS COULD GO TO A FUNCTION INIT_STRUCTURES
+	reajust_structs(&game, &maps);
 	orientate_player(game, maps.p_d);
+	init_mlx(&game->mlx);
+	
+	// CAN DISAPEAR WHEN TEXTURES LOADED FROM FILE
 	temporary_init(game);
 	
 	setup_hooks_and_loop(&game->mlx, game);
-	cleanup_mlx(&game->mlx);
 
-	ft_clean(game);
-	free(game->keys);
-
+	clean_exit(game, 1);
 	return (0);
 }

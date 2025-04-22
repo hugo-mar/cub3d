@@ -6,7 +6,7 @@
 /*   By: hugo-mar <hugo-mar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 09:23:58 by hugo-mar          #+#    #+#             */
-/*   Updated: 2025/04/22 16:39:34 by hugo-mar         ###   ########.fr       */
+/*   Updated: 2025/04/22 23:41:10 by hugo-mar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,13 @@ static int	mouse_exit(t_mlx_data *data)
 
 /*
 Handles key press events.
-If the escape key is pressed, it stops the main loop; otherwise, it marks
+If the escape key is pressed, exits in a clean way; otherwise, it marks
 the corresponding key in the game’s key state array as pressed
 */
 static int	key_press(int keycode, t_game *game)
 {
 	if (keycode == ESC_KEY)
-		clean_exit(game);
-		//mlx_loop_end(game->mlx.mlx);
+		clean_exit(game, 0);
 	else if (keycode >= 0 && keycode < 65536)
 		game->keys[keycode] = 1;
 	return (0);
