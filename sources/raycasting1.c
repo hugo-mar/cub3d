@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting1.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: divalent <divalent@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hugo-mar <hugo-mar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 15:08:44 by hugo-mar          #+#    #+#             */
-/*   Updated: 2025/04/21 16:53:51 by divalent         ###   ########.fr       */
+/*   Updated: 2025/04/22 15:29:44 by hugo-mar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,22 @@ void	compute_wall_distance(t_game *g)
 		g->ray.draw_end = WIN_HEIGHT -1;
 }
 
+void	draw_floor_and_sky(t_game *game, int x)
+{
+	int	y;
+	
+	y = 0;
+	if (game->ray.draw_start)
+		while (y < game->ray.draw_start)
+			my_mlx_pixel_put(&game->mlx, x, y++, game->sky_color);
+	if (game->ray.draw_end != WIN_HEIGHT - 1)
+	{
+		y = game->ray.draw_end;	
+		while (y < WIN_HEIGHT - 1)
+			my_mlx_pixel_put(&game->mlx, x, y++, game->floor_color);
+	}
+}
+
 /*
 Main rendering function called each frame.
 It loops through every vertical screen column (x), initializes and traces the
@@ -130,12 +146,16 @@ int	render_frame(t_game *game)
 		set_step_and_side_dist(game);
 		perform_dda(game);
 		compute_wall_distance(game);
+		draw_floor_and_sky(game, x);
 		if (TEXTURED_RAYCASTER)
 			draw_textured_column(game, x);
 		else
 			draw_vertical_line(game, x);
 		x++;
 	}
+	// make_minimap(game);
+	// redraw_minimap(game);
+	// draw_player(game);
 	mlx_put_image_to_window(game->mlx.mlx, game->mlx.win, game->mlx.img, 0, 0);
 	process_player_movement(game);
 	return (0);

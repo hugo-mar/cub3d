@@ -3,14 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: divalent <divalent@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hugo-mar <hugo-mar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 15:45:48 by hugo-mar          #+#    #+#             */
-/*   Updated: 2025/04/21 18:34:44 by divalent         ###   ########.fr       */
+/*   Updated: 2025/04/22 15:08:27 by hugo-mar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+int	color_in_hex(int r, int g, int b)
+{
+	int	rr = r;
+	int	gg = g;
+	int	bb = b;
+	return ((rr << 24) | (gg << 16) | (bb << 8) | 0xFF);
+}
 
 void	reajust_structs(t_game **game, t_mapt *maps)
 {
@@ -26,6 +34,11 @@ void	reajust_structs(t_game **game, t_mapt *maps)
 	(*game)->player.plane_y = 0.66;
 	(*game)->ray.time = 0;
 	(*game)->ray.old_time = 0;
+	(*game)->sky_color = color_in_hex(maps->ceiling[0], maps->ceiling[1], maps->ceiling[2]);
+	(*game)->floor_color = color_in_hex(maps->floor[0], maps->floor[1], maps->floor[2]);
+	(*game)->keys = malloc(sizeof(int) * 65536);
+	if (!(*game)->keys)
+    	clean_exit(*game);
 }
 
 int	main(int argc, char **argv)

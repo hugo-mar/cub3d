@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_fts2.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: divalent <divalent@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hugo-mar <hugo-mar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 09:23:58 by hugo-mar          #+#    #+#             */
-/*   Updated: 2025/04/21 18:04:14 by divalent         ###   ########.fr       */
+/*   Updated: 2025/04/22 15:24:10 by hugo-mar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ In the end, it starts the main loop to process these events.
 */
 void	setup_hooks_and_loop(t_mlx_data *mlx_data, t_game *game)
 {
+	
 	mlx_hook(mlx_data->win, 2, 1L << 0, key_press, game);
 	mlx_hook(mlx_data->win, 3, 1L << 1, key_release, game);
 	mlx_hook(mlx_data->win, 17, 0L, mouse_exit, mlx_data);

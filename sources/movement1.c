@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   movement1.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: divalent <divalent@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hugo-mar <hugo-mar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 23:21:23 by hugo-mar          #+#    #+#             */
-/*   Updated: 2025/04/21 18:07:01 by divalent         ###   ########.fr       */
+/*   Updated: 2025/04/22 15:17:10 by hugo-mar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,8 +91,8 @@ void	process_player_movement(t_game *game)
 	game->ray.frame_time = (game->ray.time - game->ray.old_time) / 1000.0;
 	game->ray.mov_speed = game->ray.frame_time * 5.0;
 	game->ray.rot_speed = game->ray.frame_time * 3.0;
-	//make_minimap(game);
-	//redraw_minimap(game);
+	// make_minimap(game);
+	// redraw_minimap(game);
 	if (game->keys[W_KEY])
 		move_forward(game);
 	if (game->keys[S_KEY])
@@ -105,5 +105,5 @@ void	process_player_movement(t_game *game)
 		rotate_left(game);
 	if (game->keys[RIGHT_KEY])
 		rotate_right(game);
-	//draw_player(game);
+	// draw_player(game);
 }

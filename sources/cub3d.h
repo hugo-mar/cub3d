@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: divalent <divalent@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hugo-mar <hugo-mar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 17:52:32 by hugo-mar          #+#    #+#             */
-/*   Updated: 2025/04/21 17:49:53 by divalent         ###   ########.fr       */
+/*   Updated: 2025/04/22 15:30:33 by hugo-mar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # define WIN_WIDTH 800
 # define WIN_HEIGHT 600
-# define TEXTURED_RAYCASTER 1
+# define TEXTURED_RAYCASTER 0
 # define ESC_KEY 65307
 # define W_KEY 119
 # define A_KEY 97
@@ -86,7 +86,7 @@ typedef struct s_map
 {
 	int		width;				// number of columns in the map
 	int		height;				// number of rows in the map
-	int		**grid;			// 2D grid representing the map layout
+	int		**grid;				// 2D grid representing the map layout
 	char	**original;
 }			t_map;
 
@@ -130,6 +130,8 @@ typedef struct s_game
 	t_texture	s_texture;
 	t_texture	w_texture;
 	t_texture	e_texture;
+	int			sky_color;
+	int			floor_color;
 }				t_game;
 
 // Minilibx
@@ -151,6 +153,8 @@ void		clean_exit(t_game *g);
 int			render_frame(t_game *game);
 double		get_delta_dist(double ray_dir);
 void		draw_vertical_line(t_game *g, int x);
+void		draw_floor_and_sky(t_game *game, int x);
+
 
 // Movement
 void		process_player_movement(t_game *game);

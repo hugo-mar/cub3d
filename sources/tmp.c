@@ -6,7 +6,7 @@
 /*   By: hugo-mar <hugo-mar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 17:37:58 by hugo-mar          #+#    #+#             */
-/*   Updated: 2025/04/16 19:14:19 by hugo-mar         ###   ########.fr       */
+/*   Updated: 2025/04/22 14:55:47 by hugo-mar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,9 +113,9 @@ void	temporary_init(t_game *game)
 {
 	game->ray.time = 0;
 	game->ray.old_time = 0;
-	game->keys = malloc(sizeof(int) * 65536);
-	if (!game->keys)
-    	clean_exit(game);
+	// game->keys = malloc(sizeof(int) * 65536);
+	// if (!game->keys)
+    // 	clean_exit(game);
 	ft_memset(game->keys, 0, sizeof(game->keys));
 	game->n_texture = load_texture(game->mlx.mlx, "textures/wall1.xpm", game);
 	game->s_texture = load_texture(game->mlx.mlx, "textures/wall2.xpm", game);
