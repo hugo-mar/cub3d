@@ -6,7 +6,7 @@
 /*   By: hugo-mar <hugo-mar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 17:52:32 by hugo-mar          #+#    #+#             */
-/*   Updated: 2025/04/22 15:30:33 by hugo-mar         ###   ########.fr       */
+/*   Updated: 2025/04/22 16:03:01 by hugo-mar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # define WIN_WIDTH 800
 # define WIN_HEIGHT 600
-# define TEXTURED_RAYCASTER 0
+# define TEXTURED_RAYCASTER 1
 # define ESC_KEY 65307
 # define W_KEY 119
 # define A_KEY 97

@@ -6,7 +6,7 @@
 /*   By: hugo-mar <hugo-mar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 09:23:58 by hugo-mar          #+#    #+#             */
-/*   Updated: 2025/04/22 15:24:10 by hugo-mar         ###   ########.fr       */
+/*   Updated: 2025/04/22 16:39:34 by hugo-mar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ the corresponding key in the game’s key state array as pressed
 static int	key_press(int keycode, t_game *game)
 {
 	if (keycode == ESC_KEY)
-		mlx_loop_end(game->mlx.mlx);
+		clean_exit(game);
+		//mlx_loop_end(game->mlx.mlx);
 	else if (keycode >= 0 && keycode < 65536)
 		game->keys[keycode] = 1;
 	return (0);

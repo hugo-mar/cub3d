@@ -6,7 +6,7 @@
 /*   By: hugo-mar <hugo-mar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 15:45:48 by hugo-mar          #+#    #+#             */
-/*   Updated: 2025/04/22 15:08:27 by hugo-mar         ###   ########.fr       */
+/*   Updated: 2025/04/22 16:36:00 by hugo-mar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void	reajust_structs(t_game **game, t_mapt *maps)
 	(*game)->keys = malloc(sizeof(int) * 65536);
 	if (!(*game)->keys)
     	clean_exit(*game);
+	ft_memset((*game)->keys, 0, sizeof(int) * 65536);
 }
 
 int	main(int argc, char **argv)
