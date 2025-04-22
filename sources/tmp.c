@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tmp.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hugo-mar <hugo-mar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: divalent <divalent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 17:37:58 by hugo-mar          #+#    #+#             */
-/*   Updated: 2025/04/22 14:55:47 by hugo-mar         ###   ########.fr       */
+/*   Updated: 2025/04/22 16:31:18 by divalent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,11 +116,11 @@ void	temporary_init(t_game *game)
 	// game->keys = malloc(sizeof(int) * 65536);
 	// if (!game->keys)
     // 	clean_exit(game);
-	ft_memset(game->keys, 0, sizeof(game->keys));
-	game->n_texture = load_texture(game->mlx.mlx, "textures/wall1.xpm", game);
-	game->s_texture = load_texture(game->mlx.mlx, "textures/wall2.xpm", game);
-	game->e_texture = load_texture(game->mlx.mlx, "textures/wall3.xpm", game);
-	game->w_texture = load_texture(game->mlx.mlx, "textures/wall4.xpm", game);
+	// ft_memset(game->keys, 0, sizeof(game->keys));
+	// game->n_texture = load_texture(game->mlx.mlx, "textures/wall1.xpm", game);
+	// game->s_texture = load_texture(game->mlx.mlx, "textures/wall2.xpm", game);
+	// game->e_texture = load_texture(game->mlx.mlx, "textures/wall3.xpm", game);
+	// game->w_texture = load_texture(game->mlx.mlx, "textures/wall4.xpm", game);
 }
 
 /*

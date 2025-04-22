@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hugo-mar <hugo-mar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: divalent <divalent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 17:52:32 by hugo-mar          #+#    #+#             */
-/*   Updated: 2025/04/22 15:30:33 by hugo-mar         ###   ########.fr       */
+/*   Updated: 2025/04/22 17:26:01 by divalent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # define WIN_WIDTH 800
 # define WIN_HEIGHT 600
-# define TEXTURED_RAYCASTER 0
+# define TEXTURED_RAYCASTER 1
 # define ESC_KEY 65307
 # define W_KEY 119
 # define A_KEY 97
@@ -132,6 +132,7 @@ typedef struct s_game
 	t_texture	e_texture;
 	int			sky_color;
 	int			floor_color;
+	int			minimap;
 }				t_game;
 
 // Minilibx
@@ -190,7 +191,6 @@ void	print_game_data(t_game *game);
 //parsing extras
 void	make_minimap(t_game *game);
 void	fill_pixels(t_game *game, float x, float y, int color);
-void	redraw_minimap(t_game *game);
 void	draw_player(t_game *game);
 
 #endif

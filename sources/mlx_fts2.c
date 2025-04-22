@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_fts2.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hugo-mar <hugo-mar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: divalent <divalent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 09:23:58 by hugo-mar          #+#    #+#             */
-/*   Updated: 2025/04/22 15:24:10 by hugo-mar         ###   ########.fr       */
+/*   Updated: 2025/04/22 17:28:08 by divalent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,13 @@ static int	key_press(int keycode, t_game *game)
 {
 	if (keycode == ESC_KEY)
 		mlx_loop_end(game->mlx.mlx);
+	if (keycode == 109)
+	{
+		if (game->minimap == 0)
+			game->minimap = 1;
+		else
+			game->minimap = 0;
+	}
 	else if (keycode >= 0 && keycode < 65536)
 		game->keys[keycode] = 1;
 	return (0);

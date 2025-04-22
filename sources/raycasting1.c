@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting1.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hugo-mar <hugo-mar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: divalent <divalent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 15:08:44 by hugo-mar          #+#    #+#             */
-/*   Updated: 2025/04/22 15:29:44 by hugo-mar         ###   ########.fr       */
+/*   Updated: 2025/04/22 17:26:53 by divalent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,7 @@ void	draw_floor_and_sky(t_game *game, int x)
 			my_mlx_pixel_put(&game->mlx, x, y++, game->sky_color);
 	if (game->ray.draw_end != WIN_HEIGHT - 1)
 	{
-		y = game->ray.draw_end;	
+		y = game->ray.draw_end;
 		while (y < WIN_HEIGHT - 1)
 			my_mlx_pixel_put(&game->mlx, x, y++, game->floor_color);
 	}
@@ -153,9 +153,8 @@ int	render_frame(t_game *game)
 			draw_vertical_line(game, x);
 		x++;
 	}
-	// make_minimap(game);
-	// redraw_minimap(game);
-	// draw_player(game);
+	if (game->minimap == 1)
+		make_minimap(game);
 	mlx_put_image_to_window(game->mlx.mlx, game->mlx.win, game->mlx.img, 0, 0);
 	process_player_movement(game);
 	return (0);
