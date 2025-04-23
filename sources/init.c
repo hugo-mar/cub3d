@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hugo-mar <hugo-mar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: divalent <divalent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 17:06:41 by hugo-mar          #+#    #+#             */
-/*   Updated: 2025/04/23 14:46:20 by hugo-mar         ###   ########.fr       */
+/*   Updated: 2025/04/23 15:39:45 by divalent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ static void	init_structs(t_game *game, t_mapt *maps)
 	game->player.plane_y = 0.66;
 	game->ray.time = 0;
 	game->ray.old_time = 0;
+	game->minimap = 0;
 	game->sky_color = color_rgb(maps->ceiling[0], maps->ceiling[1],
 		maps->ceiling[2]);
 	game->floor_color = color_rgb(maps->floor[0], maps->floor[1],
@@ -52,10 +53,14 @@ static void	init_structs(t_game *game, t_mapt *maps)
 
 	/* TODO: estes loads podem ir para uma futura parse_textures()
 	   quando já leres os caminhos a partir do ficheiro .cub           */
-	game->n_texture = load_texture(game->mlx.mlx, "textures/wall1.xpm", game);
-	game->s_texture = load_texture(game->mlx.mlx, "textures/wall2.xpm", game);
-	game->e_texture = load_texture(game->mlx.mlx, "textures/wall3.xpm", game);
-	game->w_texture = load_texture(game->mlx.mlx, "textures/wall4.xpm", game);
+	game->n_texture = load_texture(game->mlx.mlx, maps->NO, game);
+	game->s_texture = load_texture(game->mlx.mlx, maps->SO, game);
+	game->e_texture = load_texture(game->mlx.mlx, maps->EA, game);
+	game->w_texture = load_texture(game->mlx.mlx, maps->WE, game);
+	free(maps->NO);
+	free(maps->SO);
+	free(maps->EA);
+	free(maps->WE);
 }
 
 /*

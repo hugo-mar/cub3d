@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   clean_exit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hugo-mar <hugo-mar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: divalent <divalent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 14:18:19 by hugo-mar          #+#    #+#             */
-/*   Updated: 2025/04/23 14:20:23 by hugo-mar         ###   ########.fr       */
+/*   Updated: 2025/04/23 15:37:26 by divalent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ void	clean_exit(t_game *g, int status)
 		exit(EXIT_FAILURE);
 	cleanup_textures(g);
 	free_map(&g->map);
+	free_array(g->map.original);
 	free(g->keys);
 	g->keys = NULL;
 	cleanup_mlx(&g->mlx);
