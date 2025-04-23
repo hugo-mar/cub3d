@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: divalent <divalent@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hugo-mar <hugo-mar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 15:04:32 by divalent          #+#    #+#             */
-/*   Updated: 2025/04/10 16:47:07 by divalent         ###   ########.fr       */
+/*   Updated: 2025/04/23 16:43:54 by hugo-mar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,13 @@ int	detect_zero_next_to_space(char **tab, int x, int y)
 		return (0);
 	if (tab[y][x] && tab[y][x] == '0')
 	{
-		if (x > 0 && (tab[y][x - 1] == ' ' || !tab[y][x - 1] || tab[y][x - 1] == '\n'))
+		if (x > 0 && (tab[y][x - 1] == ' ' || !tab[y][x - 1]
+			|| tab[y][x - 1] == '\n'))
 			return (1);
 		if (tab[y][x + 1] == ' ' || !tab[y][x + 1] || tab[y][x + 1] == '\n')
 			return (1);
-		if (y > 0 && (tab[y - 1][x] == ' ' || !tab[y - 1][x] || tab[y - 1][x] == '\n'))
+		if (y > 0 && (tab[y - 1][x] == ' ' || !tab[y - 1][x]
+			|| tab[y - 1][x] == '\n'))
 			return (1);
 		if (tab[y + 1][x] == ' ' || !tab[y + 1][x] || tab[y + 1][x] == '\n')
 			return (1);
@@ -65,7 +67,8 @@ int	invalid_chars(char **map)
 	{
 		while (map[y][x])
 		{
-			if (map[y][x] != '0' && map[y][x] != '1' && map[y][x] != ' ' && map[y][x] != '\n')
+			if (map[y][x] != '0' && map[y][x] != '1' && map[y][x] != ' '
+				&& map[y][x] != '\n')
 				return (1);
 			x++;
 		}

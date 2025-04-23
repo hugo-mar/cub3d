@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils2.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hugo-mar <hugo-mar@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/23 15:48:12 by hugo-mar          #+#    #+#             */
+/*   Updated: 2025/04/23 16:05:30 by hugo-mar         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
-int		checka_isto(char **temp)
+int	checka_isto(char **temp)
 {
 	int	i;
 	int	k;
@@ -56,22 +68,22 @@ void	rgb_checkers(t_mapt *map, char *line)
 		line++;
 	if (ft_strncmp(line, "NO ", 3) == 0)
 	{
-		map->NO = ft_substr(line, 5, ft_strlen(line) - 6);
+		map->no = ft_substr(line, 5, ft_strlen(line) - 6);
 		return ;
 	}
 	else if (ft_strncmp(line, "SO ", 3) == 0)
 	{
-		map->SO = ft_substr(line, 5, ft_strlen(line) - 6);
+		map->so = ft_substr(line, 5, ft_strlen(line) - 6);
 		return ;
 	}
 	else if (ft_strncmp(line, "WE ", 3) == 0)
 	{
-		map->WE = ft_substr(line, 5, ft_strlen(line) - 6);
+		map->we = ft_substr(line, 5, ft_strlen(line) - 6);
 		return ;
 	}
 	else if (ft_strncmp(line, "EA ", 3) == 0)
 	{
-		map->EA = ft_substr(line, 5, ft_strlen(line) - 6);
+		map->ea = ft_substr(line, 5, ft_strlen(line) - 6);
 		return ;
 	}
 	else
@@ -88,7 +100,6 @@ void	mlx_cleaner(t_mlx_data *data)
 int	closeit(t_all *all, int signal)
 {
 	maps_cleaner(all->maps);
-	//mlx_cleaner(all->data);
 	(void) signal;
 	exit (0);
 }

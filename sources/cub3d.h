@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: divalent <divalent@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hugo-mar <hugo-mar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 17:52:32 by hugo-mar          #+#    #+#             */
-/*   Updated: 2025/04/23 16:59:55 by divalent         ###   ########.fr       */
+/*   Updated: 2025/04/23 16:40:46 by hugo-mar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,16 +61,14 @@ typedef struct s_texture
 
 typedef struct s_tex_col
 {
-    double      wall_x;
-    int         tex_x;
-    double      step;
-    double      tex_pos;
-    int         tex_y;
-    unsigned int color;
-    t_texture   *tex;
-}   t_tex_col;
-
-
+	double			wall_x;
+	int				tex_x;
+	double			step;
+	double			tex_pos;
+	int				tex_y;
+	unsigned int	color;
+	t_texture		*tex;
+}			t_tex_col;
 
 typedef struct s_player
 {
@@ -144,53 +142,52 @@ void			clear_image(t_mlx_data *data);
 unsigned int	color_rgb(int r, int g, int b);
 
 // Initialization
-t_game		*get_game(void);
-void		init_data(t_game *game, t_mapt *maps);
+t_game			*get_game(void);
+void			init_data(t_game *game, t_mapt *maps);
 
 // Cleanup
-void		clean_exit(t_game *g, int status);
+void			clean_exit(t_game *g, int status);
 
 // Raycasting
-int			render_frame(t_game *game);
-double		get_delta_dist(double ray_dir);
-void		draw_vertical_line(t_game *g, int x);
-void		draw_floor_and_sky(t_game *game, int x);
-
+int				render_frame(t_game *game);
+double			get_delta_dist(double ray_dir);
+void			draw_vertical_line(t_game *g, int x);
+void			draw_floor_and_sky(t_game *game, int x);
 
 // Movement
-void		process_player_movement(t_game *game);
-double		get_time_in_milliseconds(void);
-void		move_forward(t_game *g);
-void		move_backward(t_game *g);
-void		move_left(t_game *g);
-void		move_right(t_game *g);
-void		rotate_left(t_game *g);
-void		rotate_right(t_game *g);
-void		orientate_player(t_game *g, char direction);
+void			process_player_movement(t_game *game);
+double			get_time_in_milliseconds(void);
+void			move_forward(t_game *g);
+void			move_backward(t_game *g);
+void			move_left(t_game *g);
+void			move_right(t_game *g);
+void			rotate_left(t_game *g);
+void			rotate_right(t_game *g);
+void			orientate_player(t_game *g, char direction);
 
 // Textures
-t_texture	load_texture(void *mlx_ptr, char *file_path, t_game *g);
-void		select_wall_texture(t_game *g, t_tex_col *tc);
-double		compute_wall_x(t_game *g);
-int			compute_texture_x(double wall_x, t_texture *tex, t_game *g);
-void		compute_texture_mapping_params(t_game *g, t_tex_col *tc);
-void		render_texture_column_pixels(t_game *g, t_tex_col *tc, int x);
-void		draw_textured_column(t_game *g, int x);
+t_texture		load_texture(void *mlx_ptr, char *file_path, t_game *g);
+void			select_wall_texture(t_game *g, t_tex_col *tc);
+double			compute_wall_x(t_game *g);
+int				compute_texture_x(double wall_x, t_texture *tex, t_game *g);
+void			compute_texture_mapping_params(t_game *g, t_tex_col *tc);
+void			render_texture_column_pixels(t_game *g, t_tex_col *tc, int x);
+void			draw_textured_column(t_game *g, int x);
 
 // Temporary functions (remove when obsolete)
-void		ft_clean(t_game *game);
-void		init_test_map(t_game *game);
-void		temporary_init(t_game *game);
-void		print_game_data(t_game *game);
-void		*ft_memset(void *s, int c, size_t n);
+void			ft_clean(t_game *game);
+void			init_test_map(t_game *game);
+void			temporary_init(t_game *game);
+void			print_game_data(t_game *game);
+void			*ft_memset(void *s, int c, size_t n);
 
 // Temporary functions (remove when obsolete)
-void	init_test_map(t_game *game);
-void	print_game_data(t_game *game);
+void			init_test_map(t_game *game);
+void			print_game_data(t_game *game);
 
 //parsing extras
-void	make_minimap(t_game *game);
-void	fill_pixels(t_game *game, float x, float y, int color);
-void	draw_player(t_game *game);
+void			make_minimap(t_game *game);
+void			fill_pixels(t_game *game, float x, float y, int color);
+void			draw_player(t_game *game);
 
 #endif

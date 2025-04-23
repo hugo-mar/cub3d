@@ -6,7 +6,7 @@
 /*   By: hugo-mar <hugo-mar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 00:43:50 by hugo-mar          #+#    #+#             */
-/*   Updated: 2025/04/23 14:13:47 by hugo-mar         ###   ########.fr       */
+/*   Updated: 2025/04/23 16:14:27 by hugo-mar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ void	clear_image(t_mlx_data *data)
 		y++;
 	}
 }
+
 /*
 This function packs three 8-bit red, green and blue values into a single 24-bit
 unsigned integer in the form 0xRRGGBB. The alpha byte (bits 31-24) is cleared to
