@@ -6,7 +6,7 @@
 #    By: hugo-mar <hugo-mar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/29 14:39:20 by hugo-mar          #+#    #+#              #
-#    Updated: 2025/04/23 14:20:19 by hugo-mar         ###   ########.fr        #
+#    Updated: 2025/04/23 15:55:21 by hugo-mar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,9 +17,10 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror -g
 
 SRC = $(addprefix ./sources/, $(SOURCES))
-SOURCES = cub3d.c init.c mlx_fts1.c mlx_fts2.c raycasting1.c raycasting2.c movement1.c movement2.c \
-		textures1.c textures2.c tmp.c utils.c utils2.c map_maker.c check_map.c check_map2.c parsing.c \
-		inputs.c minimap.c clean_exit.c
+SOURCES = cub3d.c init.c mlx_fts1.c mlx_fts2.c raycasting1.c raycasting2.c \
+		movement1.c movement2.c textures1.c textures2.c utils.c utils2.c \
+		map_maker.c check_map.c check_map2.c parsing.c inputs.c minimap.c \
+		clean_exit.c
 
 MLX_LIB = ./minilibx-linux/libmlx_Linux.a
 LIB = libftprintf/libftprintf.a libft/libft.a $(MLX_LIB)

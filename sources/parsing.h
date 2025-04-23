@@ -1,5 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parsing.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hugo-mar <hugo-mar@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/23 16:10:39 by hugo-mar          #+#    #+#             */
+/*   Updated: 2025/04/23 16:10:50 by hugo-mar         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PARSING_H
-#define PARSING_H
+# define PARSING_H
 
 # include <stdarg.h>
 # include <stdio.h>
@@ -22,10 +34,10 @@ typedef struct s_mapt
 	int		y_max;
 	int		x_max;
 	int		hitbox;
-	char	*NO;
-	char	*SO;
-	char	*WE;
-	char	*EA;
+	char	*no;
+	char	*so;
+	char	*we;
+	char	*ea;
 	int		floor[3];
 	int		ceiling[3];
 }				t_mapt;

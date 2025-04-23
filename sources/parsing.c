@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: divalent <divalent@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hugo-mar <hugo-mar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 15:04:29 by divalent          #+#    #+#             */
-/*   Updated: 2025/04/21 16:47:40 by divalent         ###   ########.fr       */
+/*   Updated: 2025/04/23 16:11:04 by hugo-mar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int	parsing_start(int argc, char **argv, t_mapt *maps)
 {
-
 	if (argc < 2 || argc > 2)
 		return (1);
 	maps_init(maps);

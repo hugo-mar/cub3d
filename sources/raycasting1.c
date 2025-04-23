@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting1.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: divalent <divalent@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hugo-mar <hugo-mar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 15:08:44 by hugo-mar          #+#    #+#             */
-/*   Updated: 2025/04/22 17:26:53 by divalent         ###   ########.fr       */
+/*   Updated: 2025/04/23 16:07:34 by hugo-mar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,22 +110,6 @@ void	compute_wall_distance(t_game *g)
 	g->ray.draw_end = (WIN_HEIGHT / 2) + (g->ray.line_height / 2);
 	if (g->ray.draw_end >= WIN_HEIGHT)
 		g->ray.draw_end = WIN_HEIGHT -1;
-}
-
-void	draw_floor_and_sky(t_game *game, int x)
-{
-	int	y;
-	
-	y = 0;
-	if (game->ray.draw_start)
-		while (y < game->ray.draw_start)
-			my_mlx_pixel_put(&game->mlx, x, y++, game->sky_color);
-	if (game->ray.draw_end != WIN_HEIGHT - 1)
-	{
-		y = game->ray.draw_end;
-		while (y < WIN_HEIGHT - 1)
-			my_mlx_pixel_put(&game->mlx, x, y++, game->floor_color);
-	}
 }
 
 /*

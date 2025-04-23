@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   minimap.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hugo-mar <hugo-mar@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/23 16:15:38 by hugo-mar          #+#    #+#             */
+/*   Updated: 2025/04/23 16:15:39 by hugo-mar         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "parsing.h"
 #include "cub3d.h"
 
@@ -6,7 +18,7 @@ void	fill_pixels(t_game *game, float x, float y, int color)
 	int	dy;
 	int	dx;
 	int	scale_x;
-	int scale_y;
+	int	scale_y;
 	int	cell_size;
 
 	scale_x = 200 / game->map.width;
@@ -21,7 +33,8 @@ void	fill_pixels(t_game *game, float x, float y, int color)
 	{
 		while (dx < cell_size)
 		{
-			my_mlx_pixel_put(&game->mlx, (x * cell_size) + dx, (y * cell_size) + dy, color);
+			my_mlx_pixel_put(&game->mlx, (x * cell_size) + dx,
+				(y * cell_size) + dy, color);
 			dx++;
 		}
 		dx = 0;
@@ -52,7 +65,7 @@ void	fill_minimap(t_game *game)
 
 void	make_minimap(t_game *game)
 {
-	int x;
+	int	x;
 	int	y;
 
 	y = 0;

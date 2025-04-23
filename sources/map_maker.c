@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_maker.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: divalent <divalent@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hugo-mar <hugo-mar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 15:04:37 by divalent          #+#    #+#             */
-/*   Updated: 2025/04/23 15:38:49 by divalent         ###   ########.fr       */
+/*   Updated: 2025/04/23 16:16:04 by hugo-mar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ void	maps_init(t_mapt *maps)
 	maps->floor[1] = -1;
 	maps->ceiling[0] = -1;
 	maps->floor[0] = -1;
-	maps->NO = NULL;
-	maps->SO = NULL;
-	maps->EA = NULL;
-	maps->WE = NULL;
+	maps->no = NULL;
+	maps->so = NULL;
+	maps->ea = NULL;
+	maps->we = NULL;
 }
 
 void	maps_cleaner(t_mapt *maps)
@@ -59,9 +59,7 @@ void	map_add(t_mapt *maps, int num)
 int	rgb_taker(t_mapt *maps, int fd)
 {
 	char	*line;
-	//int		flag;
 
-	//flag = 0;
 	while (1)
 	{
 		line = get_next_line(fd);

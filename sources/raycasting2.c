@@ -6,7 +6,7 @@
 /*   By: hugo-mar <hugo-mar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 14:06:34 by hugo-mar          #+#    #+#             */
-/*   Updated: 2025/04/04 23:50:14 by hugo-mar         ###   ########.fr       */
+/*   Updated: 2025/04/23 16:10:24 by hugo-mar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,4 +41,24 @@ void	draw_vertical_line(t_game *g, int x)
 	else
 		while (y <= g->ray.draw_end)
 			my_mlx_pixel_put(&g->mlx, x, y++, 0x00999999);
+}
+
+/*
+Draws the sky and floor colors for column x, above and below the wall slice
+defined by draw_start and draw_end.
+*/
+void	draw_floor_and_sky(t_game *game, int x)
+{
+	int	y;
+
+	y = 0;
+	if (game->ray.draw_start)
+		while (y < game->ray.draw_start)
+			my_mlx_pixel_put(&game->mlx, x, y++, game->sky_color);
+	if (game->ray.draw_end != WIN_HEIGHT - 1)
+	{
+		y = game->ray.draw_end;
+		while (y < WIN_HEIGHT - 1)
+			my_mlx_pixel_put(&game->mlx, x, y++, game->floor_color);
+	}
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   movement1.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: divalent <divalent@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hugo-mar <hugo-mar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 23:21:23 by hugo-mar          #+#    #+#             */
-/*   Updated: 2025/04/22 17:04:42 by divalent         ###   ########.fr       */
+/*   Updated: 2025/04/23 16:12:30 by hugo-mar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,9 @@ void	orientate_player(t_game *g, char direction)
 	else if (direction == 'E')
 		g->ray.rot_speed = 3 * PI / 2;
 	else if (direction == 'W')
-		g->ray.rot_speed = PI /2;
+		g->ray.rot_speed = PI / 2;
 	else
-		return;
+		return ;
 	rotate_left(g);
 }
 
@@ -73,7 +73,7 @@ This is useful for calculating frame timing and synchronizing movements.
 */
 double	get_time_in_milliseconds(void)
 {
-	struct	timeval tv;
+	struct timeval	tv;
 
 	gettimeofday(&tv, NULL);
 	return ((tv.tv_sec * 1000.0) + (tv.tv_usec / 1000.0));
@@ -91,8 +91,6 @@ void	process_player_movement(t_game *game)
 	game->ray.frame_time = (game->ray.time - game->ray.old_time) / 1000.0;
 	game->ray.mov_speed = game->ray.frame_time * 5.0;
 	game->ray.rot_speed = game->ray.frame_time * 3.0;
-	// make_minimap(game);
-	// redraw_minimap(game);
 	if (game->keys[W_KEY])
 		move_forward(game);
 	if (game->keys[S_KEY])
@@ -105,5 +103,4 @@ void	process_player_movement(t_game *game)
 		rotate_left(game);
 	if (game->keys[RIGHT_KEY])
 		rotate_right(game);
-	// draw_player(game);
 }

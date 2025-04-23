@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_fts2.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: divalent <divalent@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hugo-mar <hugo-mar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 09:23:58 by hugo-mar          #+#    #+#             */
-/*   Updated: 2025/04/23 15:28:35 by divalent         ###   ########.fr       */
+/*   Updated: 2025/04/23 16:13:06 by hugo-mar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static int	key_press(int keycode, t_game *game)
 	{
 		if (game->minimap == 0)
 			game->minimap = 1;
-		else 
+		else
 			game->minimap = 0;
 	}
 	else if (keycode >= 0 && keycode < 65536)
@@ -60,7 +60,6 @@ In the end, it starts the main loop to process these events.
 */
 void	setup_hooks_and_loop(t_mlx_data *mlx_data, t_game *game)
 {
-	
 	mlx_hook(mlx_data->win, 2, 1L << 0, key_press, game);
 	mlx_hook(mlx_data->win, 3, 1L << 1, key_release, game);
 	mlx_hook(mlx_data->win, 17, 0L, mouse_exit, mlx_data);

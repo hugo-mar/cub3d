@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: divalent <divalent@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hugo-mar <hugo-mar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 17:06:41 by hugo-mar          #+#    #+#             */
-/*   Updated: 2025/04/23 15:39:45 by divalent         ###   ########.fr       */
+/*   Updated: 2025/04/23 16:23:15 by hugo-mar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,11 @@ t_game	*get_game(void)
 }
 
 /*
-Initialises all in-game data structures: it copies the parsed map into the engine,
-sets the player’s starting position, direction and camera plane,
+Initialises all in-game data structures: it copies the parsed map into the
+engine, sets the player’s starting position, direction and camera plane,
 converts ceiling/floor RGB values, and allocates the key-state array.
 */
-static void	init_structs(t_game *game, t_mapt *maps)
+static void	init_structures(t_game *game, t_mapt *maps)
 {
 	game->map.grid = maps->int_map;
 	game->map.original = maps->map;
@@ -43,24 +43,25 @@ static void	init_structs(t_game *game, t_mapt *maps)
 	game->ray.old_time = 0;
 	game->minimap = 0;
 	game->sky_color = color_rgb(maps->ceiling[0], maps->ceiling[1],
-		maps->ceiling[2]);
+			maps->ceiling[2]);
 	game->floor_color = color_rgb(maps->floor[0], maps->floor[1],
-		maps->floor[2]);
+			maps->floor[2]);
 	game->keys = malloc(sizeof(int) * 65536);
 	if (!game->keys)
 		clean_exit(game, 1);
 	ft_memset(game->keys, 0, sizeof(int) * 65536);
+}
 
-	/* TODO: estes loads podem ir para uma futura parse_textures()
-	   quando já leres os caminhos a partir do ficheiro .cub           */
-	game->n_texture = load_texture(game->mlx.mlx, maps->NO, game);
-	game->s_texture = load_texture(game->mlx.mlx, maps->SO, game);
-	game->e_texture = load_texture(game->mlx.mlx, maps->EA, game);
-	game->w_texture = load_texture(game->mlx.mlx, maps->WE, game);
-	free(maps->NO);
-	free(maps->SO);
-	free(maps->EA);
-	free(maps->WE);
+static void	init_textures(t_game *game, t_mapt *maps)
+{
+	game->n_texture = load_texture(game->mlx.mlx, maps->no, game);
+	game->s_texture = load_texture(game->mlx.mlx, maps->so, game);
+	game->e_texture = load_texture(game->mlx.mlx, maps->ea, game);
+	game->w_texture = load_texture(game->mlx.mlx, maps->we, game);
+	free(maps->no);
+	free(maps->so);
+	free(maps->ea);
+	free(maps->we);
 }
 
 /*
@@ -71,6 +72,7 @@ from the map.
 void	init_data(t_game *game, t_mapt *maps)
 {
 	init_mlx(&game->mlx);
-	init_structs(game, maps);
+	init_structures(game, maps);
+	init_textures(game, maps);
 	orientate_player(game, maps->p_d);
 }
