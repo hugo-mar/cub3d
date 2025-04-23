@@ -6,7 +6,7 @@
 /*   By: hugo-mar <hugo-mar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 17:37:58 by hugo-mar          #+#    #+#             */
-/*   Updated: 2025/04/22 23:36:57 by hugo-mar         ###   ########.fr       */
+/*   Updated: 2025/04/23 13:44:40 by hugo-mar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,19 +94,19 @@
 // 	return (s);
 // }
 
-void	temporary_init(t_game *game)
-{
-	// game->ray.time = 0;
-	// game->ray.old_time = 0;
-	// game->keys = malloc(sizeof(int) * 65536);
-	// if (!game->keys)
-    // 	clean_exit(game, 1);
-	// ft_memset(game->keys, 0, sizeof(game->keys));
-	game->n_texture = load_texture(game->mlx.mlx, "textures/wall1.xpm", game);
-	game->s_texture = load_texture(game->mlx.mlx, "textures/wall2.xpm", game);
-	game->e_texture = load_texture(game->mlx.mlx, "textures/wall3.xpm", game);
-	game->w_texture = load_texture(game->mlx.mlx, "textures/wall4.xpm", game);
-}
+// void	temporary_init(t_game *game)
+// {
+// 	game->ray.time = 0;
+// 	game->ray.old_time = 0;
+// 	game->keys = malloc(sizeof(int) * 65536);
+// 	if (!game->keys)
+//     	clean_exit(game, 1);
+// 	ft_memset(game->keys, 0, sizeof(game->keys));
+// 	game->n_texture = load_texture(game->mlx.mlx, "textures/wall1.xpm", game);
+// 	game->s_texture = load_texture(game->mlx.mlx, "textures/wall2.xpm", game);
+// 	game->e_texture = load_texture(game->mlx.mlx, "textures/wall3.xpm", game);
+// 	game->w_texture = load_texture(game->mlx.mlx, "textures/wall4.xpm", game);
+// }
 
 /*
 Ends the MLX loop if the ESC key is pressed.

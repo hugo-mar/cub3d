@@ -6,7 +6,7 @@
 /*   By: hugo-mar <hugo-mar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 17:52:32 by hugo-mar          #+#    #+#             */
-/*   Updated: 2025/04/22 23:44:53 by hugo-mar         ###   ########.fr       */
+/*   Updated: 2025/04/23 14:38:28 by hugo-mar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,17 +135,16 @@ typedef struct s_game
 }				t_game;
 
 // Minilibx
-void		init_mlx(t_mlx_data *mlx_data);
-void		setup_hooks_and_loop(t_mlx_data *mlx_data, t_game *game);
-void		cleanup_mlx(t_mlx_data *mlx_data);
-void		my_mlx_pixel_put(t_mlx_data *data, int x, int y, int color);
-void		clear_image(t_mlx_data *data);
-
-// Initialization
-t_game			*get_game(void);
+void			init_mlx(t_mlx_data *mlx_data);
+void			setup_hooks_and_loop(t_mlx_data *mlx_data, t_game *game);
+void			cleanup_mlx(t_mlx_data *mlx_data);
+void			my_mlx_pixel_put(t_mlx_data *data, int x, int y, int color);
+void			clear_image(t_mlx_data *data);
 unsigned int	color_rgb(int r, int g, int b);
 
-void		orientate_player(t_game *g, char direction);
+// Initialization
+t_game		*get_game(void);
+void		init_data(t_game *game, t_mapt *maps);
 
 // Cleanup
 void		clean_exit(t_game *g, int status);
@@ -166,6 +165,7 @@ void		move_left(t_game *g);
 void		move_right(t_game *g);
 void		rotate_left(t_game *g);
 void		rotate_right(t_game *g);
+void		orientate_player(t_game *g, char direction);
 
 // Textures
 t_texture	load_texture(void *mlx_ptr, char *file_path, t_game *g);
