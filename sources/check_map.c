@@ -6,7 +6,7 @@
 /*   By: divalent <divalent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 15:04:26 by divalent          #+#    #+#             */
-/*   Updated: 2025/04/21 18:34:10 by divalent         ###   ########.fr       */
+/*   Updated: 2025/04/23 17:00:20 by divalent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	player_where(t_mapt *maps, int x, int y)
 {
-	maps->p_x = x;
-	maps->p_y = y;
+	maps->p_x = x + 0.5;
+	maps->p_y = y + 0.5;
 	maps->p_d = maps->map[y][x];
 	maps->map[y][x] = '0';
 }
@@ -97,6 +97,8 @@ int	check_map(t_mapt *maps, char *path)
 	if (ft_strncmp(path + i, ".cub", 5))
 		return (1);
 	make_map(maps, path);
+	if (check_rgb_range(maps) == 1)
+		return (1);
 	if (has_player(maps) == 1)
 		return (1);
 	if (invalid_chars(maps->map) == 1)
