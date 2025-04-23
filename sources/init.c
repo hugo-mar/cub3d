@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hugo-mar <hugo-mar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: divalent <divalent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 17:06:41 by hugo-mar          #+#    #+#             */
-/*   Updated: 2025/04/23 16:23:15 by hugo-mar         ###   ########.fr       */
+/*   Updated: 2025/04/23 17:43:08 by divalent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ converts ceiling/floor RGB values, and allocates the key-state array.
 */
 static void	init_structures(t_game *game, t_mapt *maps)
 {
+	game->maps = maps;
 	game->map.grid = maps->int_map;
 	game->map.original = maps->map;
 	game->map.height = maps->y_max;
@@ -58,10 +59,6 @@ static void	init_textures(t_game *game, t_mapt *maps)
 	game->s_texture = load_texture(game->mlx.mlx, maps->so, game);
 	game->e_texture = load_texture(game->mlx.mlx, maps->ea, game);
 	game->w_texture = load_texture(game->mlx.mlx, maps->we, game);
-	free(maps->no);
-	free(maps->so);
-	free(maps->ea);
-	free(maps->we);
 }
 
 /*

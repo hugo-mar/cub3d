@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hugo-mar <hugo-mar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: divalent <divalent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 15:48:12 by hugo-mar          #+#    #+#             */
-/*   Updated: 2025/04/23 16:05:30 by hugo-mar         ###   ########.fr       */
+/*   Updated: 2025/04/23 17:39:00 by divalent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	rgb_2(t_mapt *map, char *line)
 	{
 		temp = ft_split(line + 2, ',');
 		if (checka_isto(temp) == 1)
-			return ;			
+			return ;
 		map->floor[0] = ft_atoi(temp[0]);
 		map->floor[1] = ft_atoi(temp[1]);
 		map->floor[2] = ft_atoi(temp[2]);

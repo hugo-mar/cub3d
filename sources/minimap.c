@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hugo-mar <hugo-mar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: divalent <divalent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 16:15:38 by hugo-mar          #+#    #+#             */
-/*   Updated: 2025/04/23 16:15:39 by hugo-mar         ###   ########.fr       */
+/*   Updated: 2025/04/23 17:37:07 by divalent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,24 @@ void	fill_pixels(t_game *game, float x, float y, int color)
 	}
 }
 
+void	fill_background(t_game *game)
+{
+	int	x;
+	int	y;
+
+	y = 0;
+	while (y <= game->map.height)
+	{
+		x = 0;
+		while (x <= game->map.width + 1)
+		{
+			fill_pixels(game, x, y, 0xcccccc);
+			x++;
+		}
+		y++;
+	}
+}
+
 void	fill_minimap(t_game *game)
 {
 	int	x;
@@ -54,7 +72,7 @@ void	fill_minimap(t_game *game)
 		while (game->map.original[y][x])
 		{
 			if (game->map.original[y][x] == '1')
-				fill_pixels(game, x, y, 0x0000FF);
+				fill_pixels(game, x + 1, y, 0x0000FF);
 			x++;
 		}
 		x = 0;
@@ -64,21 +82,7 @@ void	fill_minimap(t_game *game)
 
 void	make_minimap(t_game *game)
 {
-	int	x;
-	int	y;
-
-	y = 0;
-	x = 0;
-	while (y < 200)
-	{
-		while (x < 200)
-		{
-			my_mlx_pixel_put(&game->mlx, x, y, 0xcccccc);
-			x++;
-		}
-		x = 0;
-		y++;
-	}
+	fill_background(game);
 	fill_minimap(game);
 	draw_player(game);
 }

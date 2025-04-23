@@ -6,7 +6,7 @@
 /*   By: divalent <divalent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 14:18:19 by hugo-mar          #+#    #+#             */
-/*   Updated: 2025/04/23 15:37:26 by divalent         ###   ########.fr       */
+/*   Updated: 2025/04/23 17:43:47 by divalent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,9 @@ void	clean_exit(t_game *g, int status)
 	free(g->keys);
 	g->keys = NULL;
 	cleanup_mlx(&g->mlx);
+	free(g->maps->no);
+	free(g->maps->so);
+	free(g->maps->ea);
+	free(g->maps->we);
 	exit(status);
 }

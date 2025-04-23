@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_maker.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hugo-mar <hugo-mar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: divalent <divalent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 15:04:37 by divalent          #+#    #+#             */
-/*   Updated: 2025/04/23 16:16:04 by hugo-mar         ###   ########.fr       */
+/*   Updated: 2025/04/23 17:46:14 by divalent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,14 @@ void	maps_cleaner(t_mapt *maps)
 		free_array(maps->map);
 	if (maps->int_map)
 		free_int_array(maps->int_map, maps->y_max);
+	if (maps->no)
+		free(maps->no);
+	if (maps->so)
+		free(maps->so);
+	if (maps->ea)
+		free(maps->ea);
+	if (maps->we)
+		free(maps->we);
 }
 
 void	map_add(t_mapt *maps, int num)
