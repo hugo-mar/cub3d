@@ -60,12 +60,9 @@ void	form_int_map(t_mapt *maps);
 int		invalid_chars(char **map);
 void	maps_cleaner(t_mapt *maps);
 int		closeit(t_all *all, int signal);
-//void	mlx_cleaner(t_data *data);
-//void	fill_pixels(t_mapt *maps, t_data *data, float x, float y, int color);
 int		check_hitbox(t_mapt *maps, float new_x, float new_y);
 int		is_all_here(t_mapt *maps);
 int		rgb_taker(t_mapt *maps, int fd);
 void	rgb_checkers(t_mapt *map, char *line);
-//void	relocate_player(t_mapt *maps, t_data *data, int keysym);
 
 #endif

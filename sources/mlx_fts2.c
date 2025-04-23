@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_fts2.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hugo-mar <hugo-mar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: divalent <divalent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 09:23:58 by hugo-mar          #+#    #+#             */
 /*   Updated: 2025/04/22 23:41:10 by hugo-mar         ###   ########.fr       */

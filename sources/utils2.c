@@ -49,22 +49,22 @@ void	rgb_checkers(t_mapt *map, char *line)
 		line++;
 	if (ft_strncmp(line, "NO ", 3) == 0)
 	{
-		map->NO = line + 3;
+		map->NO = ft_substr(line, 5, ft_strlen(line) - 6);
 		return ;
 	}
 	else if (ft_strncmp(line, "SO ", 3) == 0)
 	{
-		map->SO = line + 3;
+		map->SO = ft_substr(line, 5, ft_strlen(line) - 6);
 		return ;
 	}
 	else if (ft_strncmp(line, "WE ", 3) == 0)
 	{
-		map->WE = line + 3;
+		map->WE = ft_substr(line, 5, ft_strlen(line) - 6);
 		return ;
 	}
 	else if (ft_strncmp(line, "EA ", 3) == 0)
 	{
-		map->EA = line + 3;
+		map->EA = ft_substr(line, 5, ft_strlen(line) - 6);
 		return ;
 	}
 	else

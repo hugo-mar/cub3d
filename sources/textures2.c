@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   textures2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hugo-mar <hugo-mar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: divalent <divalent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 16:38:33 by hugo-mar          #+#    #+#             */
 /*   Updated: 2025/04/22 22:50:06 by hugo-mar         ###   ########.fr       */
@@ -40,17 +40,17 @@ then assigns the correct texture pointer to the provided t_tex_col structure.
 void	select_wall_texture(t_game *g, t_tex_col *tc)
 {
 	if (g->ray.side == 0)
-    {
-        if (g->ray.ray_dir_x > 0)
-            tc->tex = &g->s_texture;
-        else
-            tc->tex = &g->n_texture;
-    }
-    else
-    {
-        if (g->ray.ray_dir_y > 0)
-            tc->tex = &g->e_texture;
-        else
-            tc->tex = &g->w_texture;
-    }
+	{
+		if (g->ray.ray_dir_x > 0)
+			tc->tex = &g->s_texture;
+		else
+			tc->tex = &g->n_texture;
+	}
+	else
+	{
+		if (g->ray.ray_dir_y > 0)
+			tc->tex = &g->e_texture;
+		else
+			tc->tex = &g->w_texture;
+	}
 }

@@ -5,9 +5,3 @@ void	draw_player(t_game *game)
 {
 	fill_pixels(game, game->player.pos_y, game->player.pos_x, 0xFF0000);
 }
-
-void	redraw_minimap(t_game *game)
-{
-	fill_pixels(game, game->player.pos_y, game->player.pos_x, 0xcccccc);
-}
-

@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hugo-mar <hugo-mar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: divalent <divalent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 17:52:32 by hugo-mar          #+#    #+#             */
 /*   Updated: 2025/04/23 14:38:28 by hugo-mar         ###   ########.fr       */
@@ -132,6 +132,7 @@ typedef struct s_game
 	t_texture	e_texture;
 	int			sky_color;
 	int			floor_color;
+	int			minimap;
 }				t_game;
 
 // Minilibx
@@ -190,7 +191,6 @@ void	print_game_data(t_game *game);
 //parsing extras
 void	make_minimap(t_game *game);
 void	fill_pixels(t_game *game, float x, float y, int color);
-void	redraw_minimap(t_game *game);
 void	draw_player(t_game *game);
 
 #endif

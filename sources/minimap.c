@@ -10,7 +10,7 @@ void	fill_pixels(t_game *game, float x, float y, int color)
 	int	cell_size;
 
 	scale_x = 200 / game->map.width;
-    scale_y = 200 / game->map.height;
+	scale_y = 200 / game->map.height;
 	if (scale_x < scale_y)
 		cell_size = scale_x;
 	else
@@ -21,7 +21,7 @@ void	fill_pixels(t_game *game, float x, float y, int color)
 	{
 		while (dx < cell_size)
 		{
-			mlx_pixel_put(game->mlx.mlx, game->mlx.win, (x * cell_size) + dx, (y * cell_size) + dy, color);
+			my_mlx_pixel_put(&game->mlx, (x * cell_size) + dx, (y * cell_size) + dy, color);
 			dx++;
 		}
 		dx = 0;
@@ -52,15 +52,21 @@ void	fill_minimap(t_game *game)
 
 void	make_minimap(t_game *game)
 {
-	t_image	img;
-	int		img_width;
-	int		img_height;
+	int x;
+	int	y;
 
-	img.addr = "./textures/minimap.xpm";
-	img.img = mlx_xpm_file_to_image(game->mlx.mlx, img.addr,
-			&img_width, &img_height);
-	mlx_put_image_to_window(game->mlx.mlx, game->mlx.win, img.img,
-		0, 0);
-	mlx_destroy_image(game->mlx.mlx, img.img);
+	y = 0;
+	x = 0;
+	while (y < 200)
+	{
+		while (x < 200)
+		{
+			my_mlx_pixel_put(&game->mlx, x, y, 0xcccccc);
+			x++;
+		}
+		x = 0;
+		y++;
+	}
 	fill_minimap(game);
+	draw_player(game);
 }
