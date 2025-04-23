@@ -6,8 +6,8 @@
 /*   By: divalent <divalent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 15:45:48 by hugo-mar          #+#    #+#             */
-/*   Updated: 2025/04/22 17:26:12 by divalent         ###   ########.fr       */
-/*                                                                            */
+/*   Updated: 2025/04/23 14:40:59 by hugo-mar         ###   ########.fr       */
+/*                                                                            */a
 /* ************************************************************************** */
 
 #include "cub3d.h"
@@ -26,14 +26,6 @@ void	load_things(t_game *game, t_mapt *maps)
 	free(maps->SO);
 	free(maps->EA);
 	free(maps->WE);
-}
-
-int	color_in_hex(int r, int g, int b)
-{
-	int	rr = r;
-	int	gg = g;
-	int	bb = b;
-	return ((rr << 24) | (gg << 16) | (bb << 8) | 0xFF);
 }
 
 void	reajust_structs(t_game **game, t_mapt *maps)
@@ -61,21 +53,13 @@ int	main(int argc, char **argv)
 	t_mapt	maps;
 
 	game = get_game();
+	
+	// IT'S NEEDED TO PARSE THE COLORS (MUST BE 0-255)
 	if (parsing_start(argc, argv, &maps) == 1)
 		return (1);
-	reajust_structs(&game, &maps);
-	init_mlx(&game->mlx);
 
-	//init_test_map(game);
-	orientate_player(game, maps.p_d);
-	temporary_init(game);
-	load_things(game, &maps);
-	
+	init_data(game, &maps);
 	setup_hooks_and_loop(&game->mlx, game);
-	cleanup_mlx(&game->mlx);
-
-	ft_clean(game);
-	free(game->keys);
-
+	clean_exit(game, 2);
 	return (0);
 }

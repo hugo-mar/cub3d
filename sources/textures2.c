@@ -6,7 +6,7 @@
 /*   By: divalent <divalent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 16:38:33 by hugo-mar          #+#    #+#             */
-/*   Updated: 2025/04/22 16:17:12 by divalent         ###   ########.fr       */
+/*   Updated: 2025/04/22 22:50:06 by hugo-mar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ t_texture	load_texture(void *mlx_ptr, char *file_path, t_game *g)
 	if (!tex.img)
 	{
 		perror(file_path);
-		clean_exit(g);
+		clean_exit(g, 1);
 	}
 	tex.addr = mlx_get_data_addr(tex.img, &tex.bits_per_pixel, &tex.line_length,
 		&tex.endian);
