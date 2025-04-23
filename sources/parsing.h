@@ -76,5 +76,6 @@ int		check_hitbox(t_mapt *maps, float new_x, float new_y);
 int		is_all_here(t_mapt *maps);
 int		rgb_taker(t_mapt *maps, int fd);
 void	rgb_checkers(t_mapt *map, char *line);
+int		check_rgb_range(t_mapt *maps);
 
 #endif

@@ -15,12 +15,19 @@
 int	checka_isto(char **temp)
 {
 	int	i;
+	int	k;
 
+	k = 0;
 	i = 0;
 	while (temp[i])
 	{
-		if (ft_isdigit(temp[i][0]) == 0)
-			return (1);
+		while (temp[i][k] && temp[i][k] != '\n')
+		{
+			if (ft_isdigit(temp[i][k]) == 0)
+				return (1);
+			k++;
+		}
+		k = 0;
 		i++;
 	}
 	if (i < 3)
@@ -47,7 +54,7 @@ void	rgb_2(t_mapt *map, char *line)
 	{
 		temp = ft_split(line + 2, ',');
 		if (checka_isto(temp) == 1)
-			return ;
+			return ;			
 		map->floor[0] = ft_atoi(temp[0]);
 		map->floor[1] = ft_atoi(temp[1]);
 		map->floor[2] = ft_atoi(temp[2]);

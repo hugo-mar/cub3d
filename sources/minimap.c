@@ -60,7 +60,6 @@ void	fill_minimap(t_game *game)
 		x = 0;
 		y++;
 	}
-	fill_pixels(game, game->player.pos_y, game->player.pos_x, 0xFF0000);
 }
 
 void	make_minimap(t_game *game)
