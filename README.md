@@ -130,34 +130,6 @@ This approach creates the illusion of 3D while the world is still represented in
 
 ---
 
-## Suggested Project Structure
-
-A common structure for cub3D is:
-
-```txt
-.
-├── Makefile
-├── includes/
-├── src/
-├── textures/
-├── maps/
-├── libft/
-└── minilibx/
-```
-
-A clean internal architecture often separates the project into modules such as:
-
-- parsing
-- map validation
-- player initialization
-- rendering
-- ray-casting
-- texture loading
-- input handling
-- cleanup and error management
-
----
-
 ## Instructions
 
 ### Requirements
